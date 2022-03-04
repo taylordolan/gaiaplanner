@@ -1,30 +1,5 @@
 <script>
-
-  // todo
-  // - [ ] store state
-  // - [ ] reset button
-  // - [ ] automatically add turns
-  // - [ ] deleting rows
-  // - [ ] sorting rows
-
-  let turns = [
-    {
-      description: "current values",
-      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
-    },
-    {
-      description: "",
-      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
-    },
-    {
-      description: "",
-      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
-    },
-    {
-      description: "",
-      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
-    },
-  ]
+  import { turns } from './stores.js';
 
   const getTotal = (turns, type) => {
     let total = 0;
@@ -39,13 +14,13 @@
       description: "",
       resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
     }];
-    turns = t;
+    $turns = t;
   }
 </script>
 
 <main>
   <div class="plan">
-    {#each turns as turn, i}
+    {#each $turns as turn, i}
     <div class="turn">
       <input class="input input-description" bind:value={turn.description}>
       {#each Object.entries(turn.resources) as resource}
@@ -54,12 +29,12 @@
     </div>
     {/each}
     <div class="footer">
-      <button on:click={addTurn(turns)}>add turn</button>
-      <span class="total">{getTotal(turns, "credits")}c</span>
-      <span class="total">{getTotal(turns, "ore")}o</span>
-      <span class="total">{getTotal(turns, "knowledge")}k</span>
-      <span class="total">{getTotal(turns, "qic")}q</span>
-      <span class="total">{getTotal(turns, "vp")}vp</span>
+      <button on:click={addTurn($turns)}>add turn</button>
+      <span class="total">{getTotal($turns, "credits")}c</span>
+      <span class="total">{getTotal($turns, "ore")}o</span>
+      <span class="total">{getTotal($turns, "knowledge")}k</span>
+      <span class="total">{getTotal($turns, "qic")}q</span>
+      <span class="total">{getTotal($turns, "vp")}vp</span>
     </div>
   </div>
 </main>
