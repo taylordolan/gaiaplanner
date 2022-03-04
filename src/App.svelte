@@ -1,7 +1,15 @@
 <script>
+
+  // todo
+  // - [ ] store state
+  // - [ ] reset button
+  // - [ ] automatically add turns
+  // - [ ] deleting rows
+  // - [ ] sorting rows
+
   let turns = [
     {
-      description: "",
+      description: "current values",
       resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
     },
     {
@@ -26,12 +34,6 @@
     return total;
   }
 
-  const modify = (turn, type, amount) => {
-    turns[turn]["resources"][type] += amount;
-    turns = turns;
-    console.log(turn)
-  }
-
   const addTurn = (t) => {
     t = [...t, {
       description: "",
@@ -45,34 +47,31 @@
   <div class="plan">
     {#each turns as turn, i}
     <div class="turn">
-      <input class="description" bind:value={turn.description}>
+      <input class="input input-description" bind:value={turn.description}>
       {#each Object.entries(turn.resources) as resource}
-        <span class="resource">
-          <button on:click={() => modify(i, resource[0], -1)}>-</button>
-          <span>{turn.resources[resource[0]]}{resource[0][0]}</span>
-          <button on:click={() => modify(i, resource[0], 1)}>+</button>
-        </span>
+        <input class="input input-resource" type="number" bind:value={turn.resources[resource[0]]}>
       {/each}
     </div>
     {/each}
     <div class="footer">
       <button on:click={addTurn(turns)}>add turn</button>
-      <span class="resource">{getTotal(turns, "credits")}c</span>
-      <span class="resource">{getTotal(turns, "ore")}o</span>
-      <span class="resource">{getTotal(turns, "knowledge")}k</span>
-      <span class="resource">{getTotal(turns, "qic")}q</span>
-      <span class="resource">{getTotal(turns, "vp")}v</span>
+      <span class="total">{getTotal(turns, "credits")}c</span>
+      <span class="total">{getTotal(turns, "ore")}o</span>
+      <span class="total">{getTotal(turns, "knowledge")}k</span>
+      <span class="total">{getTotal(turns, "qic")}q</span>
+      <span class="total">{getTotal(turns, "vp")}vp</span>
     </div>
   </div>
 </main>
 
 <style>
   main {
-    /* font-family: monospace; */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     display: flex;
     justify-content: center;
     padding: 30px;
+    font-size: 16px;
+    color: #333;
   }
 
   .turn {
@@ -83,26 +82,35 @@
     margin-top: 10px;
   }
 
-  .description {
+  .input {
+    border: 1px solid #ddd;
+    line-height: 30px;
+    padding: 0 4px;
+    color: inherit;
+    border-radius: 4px;
+  }
+
+  .input-description {
     width: 240px;
   }
 
-  .resource {
-    width: 90px;
-    display: flex;
-    align-items: center;
-    margin-left: 30px;
-    justify-content: center;
-    text-align: center;
+  .input-resource {
+    padding-right: 0;
   }
 
-  .resource span {
-    flex: 1 1 auto;
+  .input-resource,
+  .total {
+    width: 48px;
+    margin-left: 12px;
   }
 
   .footer {
     margin-top: 10px;
     display: flex;
+  }
+
+  .total {
+    padding: 0 5px;
   }
 
   .footer button {
