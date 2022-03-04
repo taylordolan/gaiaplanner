@@ -2,19 +2,19 @@
   let turns = [
     {
       description: "",
-      resources: { credits: 0, ore: 0, }
+      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
     },
     {
       description: "",
-      resources: { credits: 0, ore: 0, }
+      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
     },
     {
       description: "",
-      resources: { credits: 0, ore: 0, }
+      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
     },
     {
       description: "",
-      resources: { credits: 0, ore: 0, }
+      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
     },
   ]
 
@@ -35,34 +35,33 @@
   const addTurn = (t) => {
     t = [...t, {
       description: "",
-      resources: { credits: 0, ore: 0, }
+      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
     }];
     turns = t;
   }
 </script>
 
-<!-- description | credits | ore | knowledge | qic | vp -->
 <main>
   <div class="plan">
     {#each turns as turn, i}
     <div class="turn">
       <input class="description" bind:value={turn.description}>
-      <span class="resource">
-        <button on:click={() => modify(i, "credits", -1)}>-</button>
-        <span>{turn.resources.credits}c</span>
-        <button on:click={() => modify(i, "credits", 1)}>+</button>
-      </span>
-      <span class="resource">
-        <button on:click={() => modify(i, "ore", -1)}>-</button>
-        <span>{turn.resources.ore}o</span>
-        <button on:click={() => modify(i, "ore", 1)}>+</button>
-      </span>
+      {#each Object.entries(turn.resources) as resource}
+        <span class="resource">
+          <button on:click={() => modify(i, resource[0], -1)}>-</button>
+          <span>{turn.resources[resource[0]]}{resource[0][0]}</span>
+          <button on:click={() => modify(i, resource[0], 1)}>+</button>
+        </span>
+      {/each}
     </div>
     {/each}
     <div class="footer">
       <button on:click={addTurn(turns)}>add turn</button>
       <span class="resource">{getTotal(turns, "credits")}c</span>
       <span class="resource">{getTotal(turns, "ore")}o</span>
+      <span class="resource">{getTotal(turns, "knowledge")}k</span>
+      <span class="resource">{getTotal(turns, "qic")}q</span>
+      <span class="resource">{getTotal(turns, "vp")}v</span>
     </div>
   </div>
 </main>
