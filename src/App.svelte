@@ -9,27 +9,68 @@
     return total;
   }
 
+  // todo: create a ssot for what a turn looks like
   const addTurn = (t) => {
     t = [...t, {
       description: "",
-      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 }
+      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
+      id: t.length,
     }];
+    $turns = t;
+  }
+
+  const moveTurn = (arr, index, dir) => {
+    const dest = index + dir;
+    var element = arr[index];
+    arr.splice(index, 1);
+    arr.splice(dest, 0, element);
+    $turns = arr;
+  }
+
+  const resetTurns = (t) => {
+    t = [
+      {
+        description: "current values",
+        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
+        id: 0,
+      },
+      {
+        description: "",
+        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
+        id: 1,
+      },
+      {
+        description: "",
+        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
+        id: 2,
+      },
+      {
+        description: "",
+        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
+        id: 3,
+      },
+    ]
     $turns = t;
   }
 </script>
 
 <main>
   <div class="plan">
-    {#each $turns as turn, i}
+    {#each $turns as turn, i (turn.id)}
     <div class="turn">
       <input class="input input-description" bind:value={turn.description}>
       {#each Object.entries(turn.resources) as resource}
         <input class="input input-resource" type="number" bind:value={turn.resources[resource[0]]}>
       {/each}
+      <button class="button-move" on:click={moveTurn($turns, i, -1)}>up</button>
+      <button class="button-move" on:click={moveTurn($turns, i, 1)}>dn</button>
     </div>
     {/each}
     <div class="footer">
-      <button on:click={addTurn($turns)}>add turn</button>
+      <div class="buttons-wrapper">
+        <button class="button-add" on:click={addTurn($turns)}>add turn</button>
+        <button class="button-reset" on:click={resetTurns($turns)}>reset</button>
+      </div>
       <span class="total">{getTotal($turns, "credits")}c</span>
       <span class="total">{getTotal($turns, "ore")}o</span>
       <span class="total">{getTotal($turns, "knowledge")}k</span>
@@ -65,7 +106,8 @@
     border-radius: 4px;
   }
 
-  .input-description {
+  .input-description,
+  .buttons-wrapper {
     width: 240px;
   }
 
@@ -88,7 +130,8 @@
     padding: 0 5px;
   }
 
-  .footer button {
-    flex: 1 1 auto;
+  .button-reset,
+  .button-move {
+    margin-left: 12px;
   }
 </style>

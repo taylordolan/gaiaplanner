@@ -1,7 +1,8 @@
 todo
 - [x] store and load state
-- [ ] reset button
-- [ ] automatically add turns
+- [x] reset button
+- [x] sorting rows
 - [ ] deleting rows
-- [ ] sorting rows
+- [ ] disabling rows
 - [ ] less prominent styling for inputs with value 0
+- [ ] automatically add turns
