@@ -2,7 +2,10 @@ todo
 - [x] store and load state
 - [x] reset button
 - [x] sorting rows
-- [ ] deleting rows
+- [x] deleting rows
 - [ ] disabling rows
+- [ ] duplicate plan
+- [ ] delete plan
+- [ ] copy plan as text
 - [ ] less prominent styling for inputs with value 0
 - [ ] automatically add turns

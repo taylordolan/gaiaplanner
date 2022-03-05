@@ -27,6 +27,11 @@
     $turns = arr;
   }
 
+  const deleteTurn = (arr, index) => {
+    arr.splice(index, 1);
+    $turns = arr;
+  }
+
   const resetTurns = (t) => {
     t = [
       {
@@ -64,6 +69,7 @@
       {/each}
       <button class="button-move" on:click={moveTurn($turns, i, -1)}>up</button>
       <button class="button-move" on:click={moveTurn($turns, i, 1)}>dn</button>
+      <button class="button-move" on:click={deleteTurn($turns, i)}>x</button>
     </div>
     {/each}
     <div class="footer">
