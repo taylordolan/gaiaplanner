@@ -1,22 +1,17 @@
 <script>
-  import { turns } from './stores.js';
+  import { turns, newTurn, defaultTurns } from './stores.js';
 
-  const getTotal = (turns, type) => {
-    let total = 0;
-    for (let i = 0; i < turns.length; i++) {
-      total += turns[i]["resources"][type];
+  const addTurn = () => {
+    // make sure the new turn's id is unique
+    let greatest = 0;
+    for (var i = 0; i < $turns.length; i++) {
+      let next = $turns[i].id;
+      if (next > greatest) {
+        greatest = next;
+      }
     }
-    return total;
-  }
-
-  // todo: create a ssot for what a turn looks like
-  const addTurn = (t) => {
-    t = [...t, {
-      description: "",
-      resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
-      id: t.length,
-    }];
-    $turns = t;
+    $turns = [...$turns, $newTurn(greatest + 1)];
+    console.log($turns);
   }
 
   const moveTurn = (arr, index, dir) => {
@@ -32,30 +27,23 @@
     $turns = arr;
   }
 
-  const resetTurns = (t) => {
-    t = [
-      {
-        description: "current values",
-        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
-        id: 0,
-      },
-      {
-        description: "",
-        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
-        id: 1,
-      },
-      {
-        description: "",
-        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
-        id: 2,
-      },
-      {
-        description: "",
-        resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
-        id: 3,
-      },
-    ]
-    $turns = t;
+  const toggleTurn = (arr, index) => {
+    arr[index]["enabled"] = !arr[index]["enabled"];
+    $turns = arr;
+  }
+
+  const resetTurns = () => {
+    $turns = $defaultTurns();
+  }
+
+  const getTotal = (arr, type) => {
+    let total = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].enabled) {
+        total += arr[i]["resources"][type];
+      }
+    }
+    return total;
   }
 </script>
 
@@ -63,19 +51,20 @@
   <div class="plan">
     {#each $turns as turn, i (turn.id)}
     <div class="turn">
-      <input class="input input-description" bind:value={turn.description}>
+      <input class:dim={!turn.enabled} class="input input-description" bind:value={turn.description}>
       {#each Object.entries(turn.resources) as resource}
-        <input class="input input-resource" type="number" bind:value={turn.resources[resource[0]]}>
+        <input class:dim={!turn.enabled} class="input input-resource" type="number" bind:value={turn.resources[resource[0]]}>
       {/each}
-      <button class="button-move" on:click={moveTurn($turns, i, -1)}>up</button>
-      <button class="button-move" on:click={moveTurn($turns, i, 1)}>dn</button>
-      <button class="button-move" on:click={deleteTurn($turns, i)}>x</button>
+      <button class="button-function" on:click={moveTurn($turns, i, -1)}>up</button>
+      <button class="button-function" on:click={moveTurn($turns, i, 1)}>dn</button>
+      <button class="button-function" on:click={toggleTurn($turns, i)}>t</button>
+      <button class="button-function" on:click={deleteTurn($turns, i)}>x</button>
     </div>
     {/each}
     <div class="footer">
       <div class="buttons-wrapper">
-        <button class="button-add" on:click={addTurn($turns)}>add turn</button>
-        <button class="button-reset" on:click={resetTurns($turns)}>reset</button>
+        <button class="button-add" on:click={addTurn}>add turn</button>
+        <button class="button-reset" on:click={resetTurns}>reset</button>
       </div>
       <span class="total">{getTotal($turns, "credits")}c</span>
       <span class="total">{getTotal($turns, "ore")}o</span>
@@ -137,7 +126,11 @@
   }
 
   .button-reset,
-  .button-move {
+  .button-function {
     margin-left: 12px;
+  }
+
+  .dim {
+    opacity: .2;
   }
 </style>
