@@ -3,7 +3,7 @@ import { readable, writable } from "svelte/store"
 const _newTurn = (id) => {
   let turn = {
     description: "",
-    resources: { credits: 0, ore: 0, knowledge: 0, qic: 0, vp: 0 },
+    resources: { c: 0, o: 0, k: 0, q: 0, v: 0 },
     enabled: true,
     id: id,
   }
@@ -23,13 +23,19 @@ const _defaultTurns = () => {
   return turns;
 }
 
+let _games = () => {
+  return [
+    [_defaultTurns(), _defaultTurns()],
+  ];
+}
+
 export const defaultTurns = readable(_defaultTurns);
 
-const itemName = "turns";
+const itemName = "games";
 const retrieved = localStorage.getItem(itemName);
 const parsed = JSON.parse(retrieved);
-export const turns = writable(parsed === null ? _defaultTurns() : parsed);
+export const games = writable(parsed === null ? _games() : parsed);
 
-turns.subscribe(value =>
+games.subscribe(value =>
   localStorage.setItem(itemName, JSON.stringify(value))
 )

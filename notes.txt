@@ -4,7 +4,6 @@ todo
 - [x] sorting rows
 - [x] deleting rows
 - [x] disabling rows
-- [ ] all my functions that do stuff to turns should probably be functions of a turns object
 - [ ] duplicate plan
 - [ ] delete plan
 - [ ] copy plan as text
