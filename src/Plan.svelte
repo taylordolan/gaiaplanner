@@ -1,7 +1,7 @@
 <script>
   import Turn from "./Turn.svelte";
   export let plan;
-  import { newTurn, defaultTurns } from './stores.js';
+  import { newTurn, newPlan } from './stores.js';
 
   const addTurn = () => {
     // make sure the new turn's id is unique
@@ -28,8 +28,8 @@
     plan = plan;
   }
 
-  const resetTurns = () => {
-    plan = $defaultTurns();
+  const reset = () => {
+    plan = $newPlan();
   }
 
   const getTotal = (arr, type) => {
@@ -61,7 +61,7 @@
   <div class="footer">
     <div class="buttons-wrapper">
       <button class="button-add" on:click={addTurn}>add turn</button>
-      <button class="button-reset" on:click={resetTurns}>reset</button>
+      <button class="button-reset" on:click={reset}>reset</button>
     </div>
     <span class="total">{totalC}c</span>
     <span class="total">{totalO}o</span>
@@ -72,6 +72,10 @@
 </div>
 
 <style>
+  .plan {
+    margin-top: 60px;
+  }
+
   .buttons-wrapper {
     width: 240px;
   }
