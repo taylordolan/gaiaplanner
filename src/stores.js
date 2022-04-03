@@ -20,23 +20,18 @@ const _newPlan = () => {
   return turns;
 }
 
-const _newGame = () => {
+const _plans = () => {
   return [_newPlan()];
-}
-
-let _games = () => {
-  return [_newGame()];
 }
 
 export const newTurn = readable(_newTurn);
 export const newPlan = readable(_newPlan);
-export const newGame = readable(_newGame);
 
-const itemName = "games";
+const itemName = "plans";
 const retrieved = localStorage.getItem(itemName);
 const parsed = JSON.parse(retrieved);
-export const games = writable(parsed === null ? _games() : parsed);
+export const plans = writable(parsed === null ? _plans() : parsed);
 
-games.subscribe(value =>
+plans.subscribe(value =>
   localStorage.setItem(itemName, JSON.stringify(value))
 )

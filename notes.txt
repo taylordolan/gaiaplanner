@@ -4,8 +4,12 @@ todo
 - [x] sorting rows
 - [x] deleting rows
 - [x] disabling rows
+- [x] remove support for multiple games
+- [ ] restyle textfields
+- [ ] restyle buttons
+- [ ] update layout
+- [ ] add icons
+- [ ] add columns
 - [ ] duplicate plan
 - [ ] delete plan
-- [ ] copy plan as text
 - [ ] less prominent styling for inputs with value 0
-- [ ] automatically add turns

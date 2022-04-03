@@ -1,12 +1,17 @@
 <script>
-  import Game from "./Game.svelte";
-  import { games } from './stores.js';
+  import Plan from "./Plan.svelte";
+  import { plans, newPlan } from './stores.js';
+
+  const addPlan = () => {
+    $plans = [...$plans, $newPlan()];
+  }
 </script>
 
 <main>
-  {#each $games as game}
-    <Game bind:game={game}/>
+  {#each $plans as plan}
+    <Plan bind:plan={plan}/>
   {/each}
+  <button on:click={addPlan}>new plan</button>
 </main>
 
 <style>
