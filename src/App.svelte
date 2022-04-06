@@ -11,7 +11,7 @@
   {#each $plans as plan}
     <Plan bind:plan={plan}/>
   {/each}
-  <button on:click={addPlan}>new plan</button>
+  <button class="button" on:click={addPlan}>new plan</button>
 </main>
 
 <style>
@@ -19,8 +19,8 @@
     color: #333;
     display: flex;
     flex-direction: column;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 16px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 14px;
     justify-content: center;
     padding: 30px;
   }

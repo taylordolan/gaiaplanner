@@ -10,47 +10,47 @@
 </script>
 
 <div class="turn">
-  <input class:dim={!turn.enabled} class="input input-description" bind:value={turn.description}>
+  <input class:disabled={!turn.enabled} class="input input-desc" bind:value={turn.description}>
   {#each Object.entries(turn.resources) as resource}
-    <input class:dim={!turn.enabled} class="input input-resource" type="number" bind:value={turn.resources[resource[0]]}>
+    <input class:disabled={!turn.enabled} class="input input-num" type="number" bind:value={turn.resources[resource[0]]}>
   {/each}
-  <button class="button-function" on:click={moveUp}>up</button>
-  <button class="button-function" on:click={moveDown}>dn</button>
-  <button class="button-function" on:click={toggle}>t</button>
-  <button class="button-function" on:click={deleteTurn}>x</button>
+  <button class="button" on:click={moveUp}>up</button>
+  <button class="button" on:click={moveDown}>dn</button>
+  <button class="button" on:click={toggle}>t</button>
+  <button class="button" on:click={deleteTurn}>x</button>
 </div>
 
 <style>
   .turn {
     display: flex;
+    flex: 0 1 auto;
   }
 
+  .turn:not(:first-child) {
+    margin-top: 10px;
+  }
+
+  .button,
   .input {
-    border: 1px solid #ddd;
-    line-height: 30px;
-    padding: 0 4px;
-    color: inherit;
-    border-radius: 4px;
+    min-width: 0;
   }
 
-  .input-description {
+  .input-desc {
     width: 240px;
   }
 
-  .input-resource {
+  .input-num {
+    margin-left: 8px;
     padding-right: 0;
+    flex: 0 1 48px;
   }
 
-  .input-resource {
-    width: 48px;
-    margin-left: 12px;
+  .disabled {
+    opacity: .25;
   }
 
-  .button-function {
-    margin-left: 12px;
-  }
-
-  .dim {
-    opacity: .2;
+  .button {
+    margin-left: 8px;
+    min-width: 0;
   }
 </style>

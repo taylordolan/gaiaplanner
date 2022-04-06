@@ -5,11 +5,31 @@ todo
 - [x] deleting rows
 - [x] disabling rows
 - [x] remove support for multiple games
-- [ ] restyle textfields
-- [ ] restyle buttons
-- [ ] update layout
-- [ ] add icons
-- [ ] add columns
-- [ ] duplicate plan
-- [ ] delete plan
+- [x] restyle textfields
+- [x] restyle buttons
+- [x] restyle fields
+- [x] update font family
+- [x] move new turn button to footer
+- [x] add “totals” text
+- [ ] add icons for buttons
+- [ ] add icons for resources
+- [ ] remove inline buttons and add buttons to footer (non-functional)
+- [ ] make footer buttons functional
+- [ ] add separator between plans
+- [ ] rework responsive layout
+- [ ] keep focus in place when moving turns
+- [ ] style fields in the same row as focused field
+- [ ] add game label to ui (not model)
+- [ ] special styles for game label field
+- [ ] add game label to model
+- [ ] auto-generate game label for new plans
+- [ ] implement shortcuts
+	- [ ] turn up
+	- [ ] turn down
+	- [ ] new turn below
+- [ ] add overflow menu (non-functional)
+	- [ ] duplicate plan
+	- [ ] reset plan
+	- [ ] delete plan
+- [ ] implement overflow menu functions
 - [ ] less prominent styling for inputs with value 0

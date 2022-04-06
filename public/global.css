@@ -45,18 +45,37 @@ select {
   font: inherit;
 }
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
+/* global styles */
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.input {
+  border-radius: 4px;
+  border: 1px solid hsl(0, 0%, 86%);
+  color: inherit;
+  line-height: 34px;
+  padding: 0 12px;
+}
+
+.input:focus,
+.button:focus {
+  outline-color: #0080ff;
+  outline-style: solid inset;
+}
+
+.button {
+  background-color: hsl(0, 0%, 96%);
+  border: 0;
+  border-radius: 4px;
+  color: hsl(0, 0%, 30%);
+  cursor: pointer;
+  height: 36px;
+  line-height: 34px;
+  padding: 0 12px;
+}
+
+.button:hover {
+  background-color: hsl(0, 0%, 94%);
+}
+
+.button:active {
+  background-color: hsl(0, 0%, 92%);
 }
