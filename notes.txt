@@ -11,10 +11,11 @@ todo
 - [x] update font family
 - [x] move new turn button to footer
 - [x] add “totals” text
-- [ ] add icons for buttons
-- [ ] add icons for resources
-- [ ] remove inline buttons and add buttons to footer (non-functional)
+- [x] add icons for buttons
+- [x] add buttons to footer (non-functional)
+- [x] add icons for resources
 - [ ] make footer buttons functional
+- [ ] remove inline buttons
 - [ ] add separator between plans
 - [ ] rework responsive layout
 - [ ] keep focus in place when moving turns
@@ -28,6 +29,7 @@ todo
 	- [ ] turn down
 	- [ ] new turn below
 - [ ] add overflow menu (non-functional)
+  - [ ] add notes
 	- [ ] duplicate plan
 	- [ ] reset plan
 	- [ ] delete plan

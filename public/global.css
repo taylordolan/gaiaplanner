@@ -56,12 +56,12 @@ select {
 }
 
 .input:focus,
-.button:focus {
+.btn:focus {
   outline-color: #0080ff;
   outline-style: solid inset;
 }
 
-.button {
+.btn {
   background-color: hsl(0, 0%, 96%);
   border: 0;
   border-radius: 4px;
@@ -72,10 +72,10 @@ select {
   padding: 0 12px;
 }
 
-.button:hover {
+.btn:hover {
   background-color: hsl(0, 0%, 94%);
 }
 
-.button:active {
+.btn:active {
   background-color: hsl(0, 0%, 92%);
 }
