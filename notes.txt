@@ -14,14 +14,18 @@ todo
 - [x] add icons for buttons
 - [x] add buttons to footer (non-functional)
 - [x] add icons for resources
-- [ ] make footer buttons functional
-- [ ] remove inline buttons
+- [x] make footer buttons functional
+- [x] remove inline buttons
+- [x] add game label to ui (not model)
+- [x] style fields in the same row as focused field
+- [x] special styles for game label field
+- [x] fix layout
+- [x] support responsiveness
+- [x] add indicator for selected turn
+- [x] click away to unset active turn
+- [x] restyle focus state
+- [ ] disable move buttons when active turn is at beginning or end of array
 - [ ] add separator between plans
-- [ ] rework responsive layout
-- [ ] keep focus in place when moving turns
-- [ ] style fields in the same row as focused field
-- [ ] add game label to ui (not model)
-- [ ] special styles for game label field
 - [ ] add game label to model
 - [ ] auto-generate game label for new plans
 - [ ] implement shortcuts
