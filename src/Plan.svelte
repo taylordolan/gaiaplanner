@@ -63,7 +63,7 @@ import { stop_propagation } from "svelte/internal";
 </script>
 
 <div class="plan">
-  <div class="row">
+  <div class="row header">
     <input class="input input-title">
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,10 +128,10 @@ import { stop_propagation } from "svelte/internal";
   </div>
   <div class="row footer">
     <button class="btn btn-new" on:click={addTurn}>New Turn</button>
-    <button class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={(event) => moveTurn(activeIndex, -1)}>
+    <button disabled={activeIndex === 0} class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={(event) => moveTurn(activeIndex, -1)}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
-    <button class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={moveTurn(activeIndex, 1)}>
+    <button disabled={activeIndex === plan.length - 1} class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={moveTurn(activeIndex, 1)}>
       <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
     <button class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={toggleTurn(activeIndex)}>
@@ -151,11 +151,31 @@ import { stop_propagation } from "svelte/internal";
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
+    padding: 45px 0;
     width: 100%;
+    position: relative;
+  }
+
+  .plan:first-child {
+    margin-top: 15px;
+  }
+
+  .plan:not(:first-child):before {
+    content: "";
+    width: 700px;
+    max-width: 100%;
+    border-top: 2px solid hsl(0, 0%, 96%);
+    position: relative;
+    top: -45px;
   }
 
   /* header */
+
+  .header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+  }
 
   .input-title {
     flex: 1 1 240px;

@@ -25,7 +25,7 @@ todo
 - [x] click away to unset active turn
 - [x] restyle focus state
 - [x] disable move buttons when active turn is at beginning or end
-- [ ] add separator between plans
+- [x] add separator between plans
 - [ ] add game label to model
 - [ ] auto-generate game label for new plans
 - [ ] implement shortcuts

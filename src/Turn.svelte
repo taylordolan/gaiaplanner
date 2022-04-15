@@ -16,9 +16,9 @@
 
 <div class="turn">
   <div class="row" class:in-active-row={turnIndex === activeIndex}>
-    <input class:in-active-row={turnIndex === activeIndex} on:blur={handleBlur} on:focus={handleFocus} class:disabled={!turn.enabled} class="input input-desc" bind:value={turn.description}>
+    <input class:in-active-row={turnIndex === activeIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-desc" bind:value={turn.description}>
     {#each Object.entries(turn.resources) as resource}
-    <input class:in-active-row={turnIndex === activeIndex} on:blur={handleBlur} on:focus={handleFocus} class:disabled={!turn.enabled} class="input input-num" type="number" bind:value={turn.resources[resource[0]]}>
+    <input class:in-active-row={turnIndex === activeIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-num" type="number" bind:value={turn.resources[resource[0]]}>
     {/each}
   </div>
 </div>
@@ -27,7 +27,7 @@
   .turn {
     display: flex;
     justify-content: center;
-    padding: 5px;
+    padding: 5px 0;
     width: 100%;
   }
 
@@ -53,7 +53,8 @@
     flex: 0 1 54px;
   }
 
-  .disabled {
-    opacity: .25;
+  .excluded {
+    color: hsl(0, 0%, 80%);
+    text-decoration: line-through;
   }
 </style>
