@@ -10,14 +10,17 @@ const _newTurn = (id) => {
 }
 
 const _newPlan = () => {
-  let turns = [
-    _newTurn(0),
-    _newTurn(1),
-    _newTurn(2),
-    _newTurn(3),
-  ]
-  turns[0].description = "current values";
-  return turns;
+  let plan = {
+    label: "",
+    turns: [
+      _newTurn(0),
+      _newTurn(1),
+      _newTurn(2),
+      _newTurn(3)
+    ],
+  };
+  plan.turns[0].description = "current values";
+  return plan;
 }
 
 const _plans = () => {

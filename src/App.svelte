@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .row {

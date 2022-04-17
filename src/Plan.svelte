@@ -1,7 +1,6 @@
 <script>
   import Turn from "./Turn.svelte";
   import { newTurn, newPlan } from './stores.js';
-import { stop_propagation } from "svelte/internal";
   export let plan;
 
   let activeIndex = null;
@@ -55,16 +54,16 @@ import { stop_propagation } from "svelte/internal";
     return total;
   }
 
-  $: totalC = getTotal(plan, "c");
-  $: totalO = getTotal(plan, "o");
-  $: totalK = getTotal(plan, "k");
-  $: totalQ = getTotal(plan, "q");
-  $: totalV = getTotal(plan, "v");
+  $: totalC = getTotal(plan.turns, "c");
+  $: totalO = getTotal(plan.turns, "o");
+  $: totalK = getTotal(plan.turns, "k");
+  $: totalQ = getTotal(plan.turns, "q");
+  $: totalV = getTotal(plan.turns, "v");
 </script>
 
 <div class="plan">
   <div class="row header">
-    <input class="input input-title">
+    <input bind:value={plan.label} class="input input-title">
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M28 12V18C28 22.42 22.18 26 15 26C7.82 26 2 22.42 2 18V12C2 7.58 7.82 4 15 4C22.18 4 28 7.58 28 12Z" fill="#FFF799"/>
@@ -110,7 +109,7 @@ import { stop_propagation } from "svelte/internal";
       </svg>
     </div>
   </div>
-  {#each plan as turn, i (turn.id)}
+  {#each plan.turns as turn, i (turn.id)}
   <Turn
     bind:activeIndex={activeIndex}
     bind:activeElement={activeElement}
@@ -179,6 +178,7 @@ import { stop_propagation } from "svelte/internal";
 
   .input-title {
     flex: 1 1 240px;
+    font-weight: 500;
   }
 
   .input-title:not(:hover) {
@@ -208,7 +208,8 @@ import { stop_propagation } from "svelte/internal";
   }
 
   .totals {
-    margin-top: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
   }
 
   .total {
@@ -221,7 +222,7 @@ import { stop_propagation } from "svelte/internal";
   .footer {
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
+    padding-top: 5px;
   }
 
   .btn-new {

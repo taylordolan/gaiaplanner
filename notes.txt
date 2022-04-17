@@ -26,16 +26,15 @@ todo
 - [x] restyle focus state
 - [x] disable move buttons when active turn is at beginning or end
 - [x] add separator between plans
-- [ ] add game label to model
-- [ ] auto-generate game label for new plans
-- [ ] implement shortcuts
-	- [ ] turn up
-	- [ ] turn down
-	- [ ] new turn below
+- [x] add game label to model
 - [ ] add overflow menu (non-functional)
   - [ ] add notes
 	- [ ] duplicate plan
 	- [ ] reset plan
 	- [ ] delete plan
+- [ ] implement shortcuts
+	- [ ] turn up
+	- [ ] turn down
+	- [ ] new turn below
 - [ ] implement overflow menu functions
 - [ ] less prominent styling for inputs with value 0
