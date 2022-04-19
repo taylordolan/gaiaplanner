@@ -27,14 +27,15 @@ todo
 - [x] disable move buttons when active turn is at beginning or end
 - [x] add separator between plans
 - [x] add game label to model
-- [ ] add overflow menu (non-functional)
-  - [ ] add notes
-	- [ ] duplicate plan
-	- [ ] reset plan
-	- [ ] delete plan
+- [x] add overflow menu (non-functional)
+  - [x] add notes
+	- [x] duplicate plan
+	- [x] reset plan
+	- [x] delete plan
+- [x] implement overflow menu functions
 - [ ] implement shortcuts
 	- [ ] turn up
 	- [ ] turn down
 	- [ ] new turn below
-- [ ] implement overflow menu functions
 - [ ] less prominent styling for inputs with value 0
+- [ ] indicate turns that use more than the available resources

@@ -1,29 +1,33 @@
 <script>
   import Turn from "./Turn.svelte";
-  import { newTurn, newPlan } from './stores.js';
+  import newTurn from './stores.js';
+  import autosize from 'svelte-autosize';
   export let plan;
+  export let deletePlan;
+  export let duplicatePlan;
 
   let activeIndex = null;
   let activeElement = null;
+  let showMenu = false;
 
   const addTurn = () => {
     // make sure the new turn's id is unique
     let greatest = 0;
-    for (var i = 0; i < plan.length; i++) {
-      let next = plan[i].id;
+    for (var i = 0; i < plan.turns.length; i++) {
+      let next = plan.turns[i].id;
       if (next > greatest) {
         greatest = next;
       }
     }
-    plan = [...plan, $newTurn(greatest + 1)];
+    plan.turns = [...plan.turns, $newTurn(greatest + 1)];
   }
 
   const moveTurn = (index, dir) => {
     const dest = index + dir;
-    var turn = plan[index];
-    plan.splice(index, 1);
-    plan.splice(dest, 0, turn);
-    plan = plan;
+    var turn = plan.turns[index];
+    plan.turns.splice(index, 1);
+    plan.turns.splice(dest, 0, turn);
+    plan.turns = plan.turns;
     activeIndex += dir;
     setTimeout(() => {
       activeElement.focus();
@@ -31,17 +35,13 @@
   }
 
   let toggleTurn = (index) => {
-    plan[index].enabled = !plan[index].enabled;
-    plan = plan;
+    plan.turns[index].enabled = !plan.turns[index].enabled;
+    plan.turns = plan.turns;
   }
 
   const deleteTurn = (index) => {
-    plan.splice(index, 1);
-    plan = plan;
-  }
-
-  const reset = () => {
-    plan = $newPlan();
+    plan.turns.splice(index, 1);
+    plan.turns = plan.turns;
   }
 
   const getTotal = (arr, type) => {
@@ -139,10 +139,24 @@
     <button class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={deleteTurn(activeIndex)}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.41,8l3.29-3.29c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-3.29,3.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l3.29,3.29-3.29,3.29c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l3.29-3.29,3.29,3.29c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29c.39-.39,.39-1.02,0-1.41l-3.29-3.29Z"/></svg>
     </button>
-    <button class="btn btn-icon">
+    <button class="btn btn-icon" on:click={() => showMenu = !showMenu}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="1.5"/><circle cx="3" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg>
     </button>
+    <ul class="menu" class:hide={!showMenu}>
+      {#if !plan.showNotes}
+      <li><button class="btn btn-menu" on:click={() => {plan.showNotes = true; showMenu = false}}>Show Notes</button></li>
+      {:else}
+      <li><button class="btn btn-menu" on:click={() => {plan.showNotes = false; showMenu = false}}>Hide Notes</button></li>
+      {/if}
+      <li><button class="btn btn-menu" on:click={() => {duplicatePlan(plan); showMenu = false}}>Duplicate Plan</button></li>
+      <li><button class="btn btn-menu" on:click={deletePlan(plan)}>Delete Plan</button></li>
+    </ul>
   </div>
+  {#if plan.showNotes}
+  <div class="row">
+    <textarea bind:value={plan.notes} rows="2" use:autosize class="input input-area"></textarea>
+  </div>
+  {/if}
 </div>
 
 <style>
@@ -252,7 +266,49 @@
     transform: scaleY(-100%);
   }
 
+  /* menu */
+
+  .menu {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 4px;
+    border: 1px solid hsl(0, 0%, 92%);
+    box-shadow: 0 2px 6px hsl(0, 0%, 0%, 5%);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 6px;
+    position: absolute;
+    top: 48px;
+    width: 168px;
+    z-index: 1;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  .btn-menu {
+    background-color: hsl(0, 0%, 96%);
+    text-align: left;
+    width: 100%;
+  }
+
+  .btn-menu:not(:hover) {
+    background-color: white;
+  }
+
   .hide {
     display: none;
+  }
+
+  /* notes */
+
+  .input-area {
+    line-height: 24px;
+    margin-top: 16px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    resize: none;
+    width: 100%;
   }
 </style>

@@ -5,11 +5,27 @@
   const addPlan = () => {
     $plans = [...$plans, $newPlan()];
   }
+
+  const deletePlan = (plan) => {
+    let index = $plans.indexOf(plan);
+    if (index !== -1) {
+      $plans.splice(index, 1);
+      $plans = $plans;
+    }
+  }
+
+  const duplicatePlan = (plan) => {
+    let index = $plans.indexOf(plan);
+    if (index !== -1) {
+      $plans.splice(index, 0, structuredClone(plan));
+      $plans = $plans;
+    }
+  }
 </script>
 
 <main>
   {#each $plans as plan}
-  <Plan bind:plan={plan}/>
+  <Plan bind:plan={plan} {deletePlan} {duplicatePlan}/>
   {/each}
   <div class="row">
     <button class="btn" on:click={addPlan}>New Plan</button>

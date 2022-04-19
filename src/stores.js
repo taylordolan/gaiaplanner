@@ -12,6 +12,8 @@ const _newTurn = (id) => {
 const _newPlan = () => {
   let plan = {
     label: "",
+    notes: "",
+    showNotes: false,
     turns: [
       _newTurn(0),
       _newTurn(1),
