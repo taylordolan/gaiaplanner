@@ -1,24 +1,27 @@
 <script>
   export let turn;
-  export let activeIndex;
+  export let thisTurnIndex;
+  export let activeTurnIndex;
   export let activeElement;
-  export let turnIndex;
+  export let setAdjacentElements;
 
   let handleBlur = () => {
-    activeIndex = null;
+    activeTurnIndex = null;
   }
 
   let handleFocus = (event) => {
+    activeTurnIndex = thisTurnIndex;
     activeElement = event.target;
-    activeIndex = turnIndex;
+    setAdjacentElements();
   }
+
 </script>
 
 <div class="turn">
-  <div class="row" class:in-active-row={turnIndex === activeIndex}>
-    <input class:in-active-row={turnIndex === activeIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-desc" bind:value={turn.description}>
+  <div class="row" class:in-active-row={thisTurnIndex === activeTurnIndex}>
+    <input data-turn={thisTurnIndex} class:in-active-row={thisTurnIndex === activeTurnIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-desc" bind:value={turn.description}>
     {#each Object.entries(turn.resources) as resource}
-    <input class:in-active-row={turnIndex === activeIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-num" type="number" bind:value={turn.resources[resource[0]]}>
+    <input data-turn={thisTurnIndex} class:in-active-row={thisTurnIndex === activeTurnIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-num" type="number" bind:value={turn.resources[resource[0]]}>
     {/each}
   </div>
 </div>

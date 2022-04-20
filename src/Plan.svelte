@@ -1,13 +1,15 @@
 <script>
   import Turn from "./Turn.svelte";
-  import newTurn from './stores.js';
+  import { newTurn } from './stores.js';
   import autosize from 'svelte-autosize';
   export let plan;
   export let deletePlan;
   export let duplicatePlan;
 
-  let activeIndex = null;
+  let activeTurnIndex = null;
   let activeElement = null;
+  let upElement = null;
+  let downElement = null;
   let showMenu = false;
 
   const addTurn = () => {
@@ -22,16 +24,39 @@
     plan.turns = [...plan.turns, $newTurn(greatest + 1)];
   }
 
-  const moveTurn = (index, dir) => {
-    const dest = index + dir;
+  const moveTurnUp = (index) => {
+    const dest = index - 1;
     var turn = plan.turns[index];
     plan.turns.splice(index, 1);
     plan.turns.splice(dest, 0, turn);
     plan.turns = plan.turns;
-    activeIndex += dir;
+    activeTurnIndex--;
     setTimeout(() => {
       activeElement.focus();
     }, 1);
+  }
+
+  const moveTurnDown = (index) => {
+    const dest = index + 1;
+    var turn = plan.turns[index];
+    plan.turns.splice(index, 1);
+    plan.turns.splice(dest, 0, turn);
+    plan.turns = plan.turns;
+    activeTurnIndex++;
+    setTimeout(() => {
+      setAdjacentElements();
+    }, 1);
+  }
+
+  let setAdjacentElements = () => {
+    upElement = null;
+    downElement = null;
+    if (activeTurnIndex !== 0) {
+      upElement = activeElement.parentElement.parentElement.previousElementSibling.children[0].children[0];
+    }
+    if (activeTurnIndex !== plan.turns.length - 1) {
+      downElement = activeElement.parentElement.parentElement.nextElementSibling.children[0].children[0];
+    }
   }
 
   let toggleTurn = (index) => {
@@ -54,12 +79,40 @@
     return total;
   }
 
+  function handleKeydown(event) {
+		const keyCode = event.keyCode;
+    const up = 38;
+    const down = 40
+    if (event.altKey) {
+      if (keyCode === up && activeTurnIndex !== 0) {
+        event.preventDefault();
+        moveTurnUp(activeTurnIndex)
+      }
+      else if (keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
+        event.preventDefault();
+        moveTurnDown(activeTurnIndex)
+      }
+    }
+    else {
+      if (keyCode === up && activeTurnIndex !== 0) {
+        event.preventDefault();
+        upElement.focus();
+      }
+      else if (keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
+        event.preventDefault();
+        downElement.focus();
+      }
+    }
+	}
+
   $: totalC = getTotal(plan.turns, "c");
   $: totalO = getTotal(plan.turns, "o");
   $: totalK = getTotal(plan.turns, "k");
   $: totalQ = getTotal(plan.turns, "q");
   $: totalV = getTotal(plan.turns, "v");
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <div class="plan">
   <div class="row header">
@@ -111,10 +164,11 @@
   </div>
   {#each plan.turns as turn, i (turn.id)}
   <Turn
-    bind:activeIndex={activeIndex}
+    bind:activeTurnIndex={activeTurnIndex}
     bind:activeElement={activeElement}
     bind:turn={turn}
-    turnIndex={i}
+    {setAdjacentElements}
+    thisTurnIndex={i}
   />
   {/each}
   <div class="row totals">
@@ -127,16 +181,16 @@
   </div>
   <div class="row footer">
     <button class="btn btn-new" on:click={addTurn}>New Turn</button>
-    <button disabled={activeIndex === 0} class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={(event) => moveTurn(activeIndex, -1)}>
+    <button disabled={activeTurnIndex === 0} class:hide={activeTurnIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={moveTurnUp(activeTurnIndex)}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
-    <button disabled={activeIndex === plan.length - 1} class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={moveTurn(activeIndex, 1)}>
+    <button disabled={activeTurnIndex === plan.turns.length - 1} class:hide={activeTurnIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={moveTurnDown(activeTurnIndex)}>
       <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
-    <button class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={toggleTurn(activeIndex)}>
+    <button class:hide={activeTurnIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={toggleTurn(activeTurnIndex)}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.73,6.69c-1.27-2.58-3.85-4.19-6.73-4.19S2.55,4.11,1.27,6.69c-.4,.82-.4,1.8,0,2.62,1.27,2.58,3.85,4.19,6.73,4.19s5.45-1.6,6.73-4.19c.4-.82,.4-1.8,0-2.62Zm-1.79,1.74c-.93,1.9-2.82,3.07-4.93,3.07s-4-1.18-4.93-3.07c-.13-.27-.13-.59,0-.86,.93-1.9,2.82-3.07,4.93-3.07s4,1.18,4.93,3.07c.13,.27,.13,.59,0,.86Z"/><circle cx="8" cy="8" r="2"/></svg>
     </button>
-    <button class:hide={activeIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={deleteTurn(activeIndex)}>
+    <button class:hide={activeTurnIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={deleteTurn(activeTurnIndex)}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.41,8l3.29-3.29c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-3.29,3.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l3.29,3.29-3.29,3.29c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l3.29-3.29,3.29,3.29c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29c.39-.39,.39-1.02,0-1.41l-3.29-3.29Z"/></svg>
     </button>
     <button class="btn btn-icon" on:click={() => showMenu = !showMenu}>

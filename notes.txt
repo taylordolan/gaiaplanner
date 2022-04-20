@@ -28,14 +28,14 @@ todo
 - [x] add separator between plans
 - [x] add game label to model
 - [x] add overflow menu (non-functional)
-  - [x] add notes
-	- [x] duplicate plan
-	- [x] reset plan
-	- [x] delete plan
 - [x] implement overflow menu functions
-- [ ] implement shortcuts
-	- [ ] turn up
-	- [ ] turn down
-	- [ ] new turn below
+- [x] implement move turn shortcuts
+- [x] implement shortcuts for moving focus up and down (arrow keys)
+- [ ] when moving focus up and down, keep it in the same column
+- [ ] focus on a new turn's description field after creation
+- [ ] implement "new turn below focus" shortcut
 - [ ] less prominent styling for inputs with value 0
 - [ ] indicate turns that use more than the available resources
+- [ ] update highlight color
+- [ ] add some way to mark completed turns
+- [ ] after deleting a turn, focus on the next turn
