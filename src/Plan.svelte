@@ -83,24 +83,31 @@
 		const keyCode = event.keyCode;
     const up = 38;
     const down = 40
-    if (event.altKey) {
-      if (keyCode === up && activeTurnIndex !== 0) {
-        event.preventDefault();
-        moveTurnUp(activeTurnIndex)
+    // `activeTurnIndex` is null for plans that don't have focus.
+    // If I don't check this value, keyboard events will be repeated for each plan that exists.
+    // I'm using `!== null` because `activeTurnIndex` is 0 when it's the first turn in the plan.
+    if (activeTurnIndex !== null) {
+      if (event.altKey) {
+        if (keyCode === up && activeTurnIndex !== 0) {
+          event.preventDefault();
+          moveTurnUp(activeTurnIndex);
+        }
+        else if (keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
+          event.preventDefault();
+          moveTurnDown(activeTurnIndex);
+        }
       }
-      else if (keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
-        event.preventDefault();
-        moveTurnDown(activeTurnIndex)
-      }
-    }
-    else {
-      if (upElement && keyCode === up && activeTurnIndex !== 0) {
-        event.preventDefault();
-        upElement.focus();
-      }
-      else if (downElement && keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
-        event.preventDefault();
-        downElement.focus();
+      else {
+        if (upElement && keyCode === up && activeTurnIndex !== 0) {
+          event.preventDefault();
+          upElement.focus();
+          console.log("up")
+        }
+        else if (downElement && keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
+          event.preventDefault();
+          downElement.focus();
+          console.log("down")
+        }
       }
     }
 	}
