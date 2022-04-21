@@ -5,8 +5,11 @@
   export let activeElement;
   export let setAdjacentElements;
 
-  let handleBlur = () => {
+  let handleBlur = (event) => {
     activeTurnIndex = null;
+    if (!event.relatedTarget || (event.relatedTarget && !event.relatedTarget.classList.contains("input-desc") && !event.relatedTarget.classList.contains("input-num"))) {
+      setAdjacentElements();
+    }
   }
 
   let handleFocus = (event) => {

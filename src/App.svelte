@@ -25,7 +25,11 @@
 
 <main>
   {#each $plans as plan}
-  <Plan bind:plan={plan} {deletePlan} {duplicatePlan}/>
+  <Plan
+    bind:plan={plan}
+    {deletePlan}
+    {duplicatePlan}
+  />
   {/each}
   <div class="row">
     <button class="btn" on:click={addPlan}>New Plan</button>

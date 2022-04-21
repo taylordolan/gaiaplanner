@@ -94,11 +94,11 @@
       }
     }
     else {
-      if (keyCode === up && activeTurnIndex !== 0) {
+      if (upElement && keyCode === up && activeTurnIndex !== 0) {
         event.preventDefault();
         upElement.focus();
       }
-      else if (keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
+      else if (downElement && keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
         event.preventDefault();
         downElement.focus();
       }
