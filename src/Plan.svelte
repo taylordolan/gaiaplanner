@@ -12,7 +12,7 @@
   let downElement = null;
   let showMenu = false;
 
-  const addTurn = () => {
+  const addTurn = (index) => {
     // make sure the new turn's id is unique
     let greatest = 0;
     for (var i = 0; i < plan.turns.length; i++) {
@@ -21,7 +21,9 @@
         greatest = next;
       }
     }
-    plan.turns = [...plan.turns, $newTurn(greatest + 1)];
+    // plan.turns = [...plan.turns, $newTurn(greatest + 1)];
+    plan.turns.splice(index, 0, $newTurn(greatest + 1))
+    plan.turns = plan.turns;
   }
 
   const moveTurnUp = (index) => {
@@ -65,8 +67,17 @@
   }
 
   const deleteTurn = (index) => {
+    let nextTurn = null;
+    if (index !== plan.turns.length - 1) {
+      nextTurn = activeElement.parentElement.parentElement.nextElementSibling.children[0].children[0];
+    }
     plan.turns.splice(index, 1);
     plan.turns = plan.turns;
+    if (nextTurn) {
+      setTimeout(() => {
+        nextTurn.focus();
+      }, 1);
+    }
   }
 
   const getTotal = (arr, type) => {
@@ -80,33 +91,41 @@
   }
 
   function handleKeydown(event) {
-		const keyCode = event.keyCode;
-    const up = 38;
-    const down = 40
+    // console.log(event.key);
+		const key = event.key;
+    // const up = 38;
+    // const down = 40;
+    // const return = ;
     // `activeTurnIndex` is null for plans that don't have focus.
     // If I don't check this value, keyboard events will be repeated for each plan that exists.
     // I'm using `!== null` because `activeTurnIndex` is 0 when it's the first turn in the plan.
     if (activeTurnIndex !== null) {
+      // move turns
       if (event.altKey) {
-        if (keyCode === up && activeTurnIndex !== 0) {
+        if (key === "ArrowUp" && activeTurnIndex !== 0) {
           event.preventDefault();
           moveTurnUp(activeTurnIndex);
         }
-        else if (keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
+        else if (key === "ArrowDown" && activeTurnIndex !== plan.turns.length - 1) {
           event.preventDefault();
           moveTurnDown(activeTurnIndex);
         }
       }
-      else {
-        if (upElement && keyCode === up && activeTurnIndex !== 0) {
+      else if (key === "Enter" && activeTurnIndex) {
+        const foo = activeElement;
+        addTurn(activeTurnIndex + 1);
+        const target = foo.parentElement.parentElement.nextElementSibling.children[0].children[0];
+        target.focus();
+      }
+      // move cursor
+      else if (activeElement && activeElement.classList.contains("input-desc")) {
+        if (upElement && key === "ArrowUp" && activeTurnIndex !== 0) {
           event.preventDefault();
           upElement.focus();
-          console.log("up")
         }
-        else if (downElement && keyCode === down && activeTurnIndex !== plan.turns.length - 1) {
+        else if (downElement && key === "ArrowDown" && activeTurnIndex !== plan.turns.length - 1) {
           event.preventDefault();
           downElement.focus();
-          console.log("down")
         }
       }
     }
@@ -187,7 +206,7 @@
     <span class="total">{totalV}vp</span>
   </div>
   <div class="row footer">
-    <button class="btn btn-new" on:click={addTurn}>New Turn</button>
+    <button class="btn btn-new" on:click={addTurn(plan.turns.length)}>New Turn</button>
     <button disabled={activeTurnIndex === 0} class:hide={activeTurnIndex === null} class="btn btn-icon" on:mousedown={(event) => event.preventDefault()} on:click={moveTurnUp(activeTurnIndex)}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>

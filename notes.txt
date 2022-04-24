@@ -31,11 +31,9 @@ todo
 - [x] implement overflow menu functions
 - [x] implement move turn shortcuts
 - [x] implement shortcuts for moving focus up and down (arrow keys)
-- [ ] when moving focus up and down, keep it in the same column
-- [ ] focus on a new turn's description field after creation
+- [x] after deleting a turn, focus on the next turn
 - [ ] implement "new turn below focus" shortcut
 - [ ] less prominent styling for inputs with value 0
 - [ ] indicate turns that use more than the available resources
 - [ ] update highlight color
 - [ ] add some way to mark completed turns
-- [ ] after deleting a turn, focus on the next turn
