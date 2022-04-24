@@ -32,8 +32,8 @@ todo
 - [x] implement move turn shortcuts
 - [x] implement shortcuts for moving focus up and down (arrow keys)
 - [x] after deleting a turn, focus on the next turn
-- [ ] implement "new turn below focus" shortcut
+- [x] implement "new turn below focus" shortcut
+- [ ] add some way to mark completed turns
 - [ ] less prominent styling for inputs with value 0
 - [ ] indicate turns that use more than the available resources
 - [ ] update highlight color
-- [ ] add some way to mark completed turns

@@ -91,11 +91,7 @@
   }
 
   function handleKeydown(event) {
-    // console.log(event.key);
 		const key = event.key;
-    // const up = 38;
-    // const down = 40;
-    // const return = ;
     // `activeTurnIndex` is null for plans that don't have focus.
     // If I don't check this value, keyboard events will be repeated for each plan that exists.
     // I'm using `!== null` because `activeTurnIndex` is 0 when it's the first turn in the plan.
@@ -111,11 +107,13 @@
           moveTurnDown(activeTurnIndex);
         }
       }
-      else if (key === "Enter" && activeTurnIndex) {
-        const foo = activeElement;
+      else if (key === "Enter") {
+        const index = activeElement;
         addTurn(activeTurnIndex + 1);
-        const target = foo.parentElement.parentElement.nextElementSibling.children[0].children[0];
-        target.focus();
+        setTimeout(() => {
+          const newTurn = index.parentElement.parentElement.nextElementSibling.children[0].children[0];
+          newTurn.focus();
+        }, 1);
       }
       // move cursor
       else if (activeElement && activeElement.classList.contains("input-desc")) {
@@ -229,7 +227,7 @@
       <li><button class="btn btn-menu" on:click={() => {plan.showNotes = false; showMenu = false}}>Hide Notes</button></li>
       {/if}
       <li><button class="btn btn-menu" on:click={() => {duplicatePlan(plan); showMenu = false}}>Duplicate Plan</button></li>
-      <li><button class="btn btn-menu" on:click={deletePlan(plan)}>Delete Plan</button></li>
+      <li><button class="btn btn-menu" on:click={() => {deletePlan(plan); showMenu = false}}>Delete Plan</button></li>
     </ul>
   </div>
   {#if plan.showNotes}
