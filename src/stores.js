@@ -4,7 +4,8 @@ const _newTurn = (id) => {
   return {
     description: "",
     resources: { c: 0, o: 0, k: 0, q: 0, v: 0 },
-    enabled: true,
+    excluded: false,
+    completed: false,
     id: id,
   }
 }

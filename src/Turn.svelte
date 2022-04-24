@@ -22,9 +22,26 @@
 
 <div class="turn">
   <div class="row" class:in-active-row={thisTurnIndex === activeTurnIndex}>
-    <input data-turn={thisTurnIndex} class:in-active-row={thisTurnIndex === activeTurnIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-desc" bind:value={turn.description}>
+    <input
+      bind:value={turn.description}
+      class="input input-desc"
+      class:completed={turn.completed}
+      class:excluded={turn.excluded}
+      class:in-active-row={thisTurnIndex === activeTurnIndex}
+      data-turn={thisTurnIndex}
+      on:blur={handleBlur}
+      on:focus={handleFocus}
+    >
     {#each Object.entries(turn.resources) as resource}
-    <input data-turn={thisTurnIndex} class:in-active-row={thisTurnIndex === activeTurnIndex} on:blur={handleBlur} on:focus={handleFocus} class:excluded={!turn.enabled} class="input input-num" type="number" bind:value={turn.resources[resource[0]]}>
+    <input
+      bind:value={turn.resources[resource[0]]}
+      class="input input-num"
+      class:excluded={turn.excluded}
+      class:in-active-row={thisTurnIndex === activeTurnIndex}
+      data-turn={thisTurnIndex}
+      on:blur={handleBlur} on:focus={handleFocus}
+      type="number"
+    >
     {/each}
   </div>
 </div>
@@ -60,7 +77,10 @@
   }
 
   .excluded {
-    color: hsl(0, 0%, 80%);
+    color: hsl(0, 0%, 86%);
+  }
+
+  .completed {
     text-decoration: line-through;
   }
 </style>
