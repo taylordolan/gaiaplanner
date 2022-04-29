@@ -4,6 +4,7 @@
   export let activeTurnIndex;
   export let activeElement;
   export let setAdjacentElements;
+  export let runningTotals;
 
   let handleBlur = (event) => {
     activeTurnIndex = null;
@@ -17,7 +18,6 @@
     activeElement = event.target;
     setAdjacentElements();
   }
-
 </script>
 
 <div class="turn">
@@ -36,6 +36,7 @@
     <input
       bind:value={turn.resources[resource[0]]}
       class="input input-num"
+      class:negative-total={runningTotals[resource[0]] < 0}
       class:excluded={turn.excluded}
       class:in-active-row={thisTurnIndex === activeTurnIndex}
       data-turn={thisTurnIndex}

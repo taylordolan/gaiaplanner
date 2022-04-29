@@ -34,6 +34,7 @@ todo
 - [x] after deleting a turn, focus on the next turn
 - [x] implement "new turn below focus" shortcut
 - [x] add some way to mark completed turns
-- [ ] less prominent styling for inputs with value 0
-- [ ] indicate turns that use more than the available resources
+- [x] indicate turns that use more than the available resources
 - [ ] update highlight color
+- [ ] tooltips for buttons
+- [ ] icon for "new turn" and "new plan" buttons

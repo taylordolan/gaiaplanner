@@ -94,3 +94,8 @@ select {
   opacity: .3;
   pointer-events: none;
 }
+
+.negative-total {
+  border-color: currentColor;
+  color: hsl(0, 70%, 70%);
+}

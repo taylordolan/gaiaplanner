@@ -85,14 +85,19 @@
     }
   }
 
-  const getTotal = (arr, type) => {
-    let total = 0;
-    for (let i = 0; i < arr.length; i++) {
-      if (!arr[i].excluded) {
-        total += arr[i]["resources"][type];
+  const getTotals = (turns, turnIndex) => {
+    let totals = { c: 0, o: 0, k: 0, q: 0, v: 0 };
+    // for every turn
+    for (let j = 0; j <= turnIndex; j++) {
+      // for every type of resource
+      for (let i = 0; i < Object.entries(totals).length; i++) {
+        let resourceType = Object.entries(totals)[i][0];
+        if (!turns[j].excluded) {
+          totals[resourceType] += turns[j]["resources"][resourceType];
+        }
       }
     }
-    return total;
+    return totals;
   }
 
   function handleKeydown(event) {
@@ -134,11 +139,12 @@
     }
 	}
 
-  $: totalC = getTotal(plan.turns, "c");
-  $: totalO = getTotal(plan.turns, "o");
-  $: totalK = getTotal(plan.turns, "k");
-  $: totalQ = getTotal(plan.turns, "q");
-  $: totalV = getTotal(plan.turns, "v");
+  $: grandTotals = getTotals(plan.turns, plan.turns.length - 1);
+  $: totalC = grandTotals.c;
+  $: totalO = grandTotals.o;
+  $: totalK = grandTotals.k;
+  $: totalQ = grandTotals.q;
+  $: totalV = grandTotals.v;
 </script>
 
 <svelte:window on:keydown={handleKeydown}/>
@@ -196,17 +202,18 @@
     bind:activeTurnIndex={activeTurnIndex}
     bind:activeElement={activeElement}
     bind:turn={turn}
+    runningTotals={getTotals(plan.turns, i)}
     {setAdjacentElements}
     thisTurnIndex={i}
   />
   {/each}
   <div class="row totals">
     <span class="totals-label">Totals:</span>
-    <span class="total">{totalC}c</span>
-    <span class="total">{totalO}o</span>
-    <span class="total">{totalK}k</span>
-    <span class="total">{totalQ}q</span>
-    <span class="total">{totalV}vp</span>
+    <span class="total" class:negative-total={totalC < 0}>{totalC}c</span>
+    <span class="total" class:negative-total={totalO < 0}>{totalO}o</span>
+    <span class="total" class:negative-total={totalK < 0}>{totalK}k</span>
+    <span class="total" class:negative-total={totalQ < 0}>{totalQ}q</span>
+    <span class="total" class:negative-total={totalV < 0}>{totalV}vp</span>
   </div>
   <div class="row footer">
     <button
