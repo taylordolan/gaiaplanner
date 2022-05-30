@@ -47,6 +47,10 @@ select {
 
 /* global styles */
 
+*::selection {
+  background-color: hsl(210, 100%, 92%);
+}
+
 .row {
   display: flex;
   max-width: 100%;

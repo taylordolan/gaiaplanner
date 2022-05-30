@@ -22,6 +22,9 @@
 
 <div class="turn">
   <div class="row" class:in-active-row={thisTurnIndex === activeTurnIndex}>
+    {#if turn.completed}
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
+    {/if}
     <input
       bind:value={turn.description}
       class="input input-desc"
@@ -36,7 +39,7 @@
     <input
       bind:value={turn.resources[resource[0]]}
       class="input input-num"
-      class:negative-total={runningTotals[resource[0]] < 0}
+      class:negative-total={turn.resources[resource[0]] < 0 && runningTotals[resource[0]] < 0}
       class:excluded={turn.excluded}
       class:in-active-row={thisTurnIndex === activeTurnIndex}
       data-turn={thisTurnIndex}
@@ -82,6 +85,16 @@
   }
 
   .completed {
+    padding-left: 32px;
     text-decoration: line-through;
   }
-</style>
+
+  .icon {
+    fill: currentColor;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    transform: translateX(12px);
+    width: 16px;
+  }
+  </style>
