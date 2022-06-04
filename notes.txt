@@ -36,7 +36,8 @@ todo
 - [x] add some way to mark completed turns
 - [x] indicate turns that use more than the available resources
 - [x] update highlight color
-- [ ] tooltips for buttons
+- [x] tooltips for buttons
 - [ ] icon for "new turn" and "new plan" buttons
 - [ ] confirmation step for deleting a plan
 - [ ] change how completed and excluded relate
+- [ ] consider more prominent styling for selected turn (width, height)

@@ -223,46 +223,51 @@
       New Turn
     </button>
     <button
-      class="btn btn-icon"
+      class="btn btn-icon btn-tooltip"
       class:hide={activeTurnIndex === null}
       disabled={activeTurnIndex === 0}
       on:mousedown={(event) => event.preventDefault()}
       on:click={moveTurnUp(activeTurnIndex)}
+      data-tooltip="Move up"
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
     <button
-      class="btn btn-icon"
+      class="btn btn-icon btn-tooltip"
       class:hide={activeTurnIndex === null}
       disabled={activeTurnIndex === plan.turns.length - 1}
       on:mousedown={(event) => event.preventDefault()}
       on:click={moveTurnDown(activeTurnIndex)}
+      data-tooltip="Move down"
     >
       <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
     <button
-      class="btn btn-icon"
+      class="btn btn-icon btn-tooltip"
       class:hide={activeTurnIndex === null}
       disabled={activeTurnIndex && plan.turns[activeTurnIndex].completed}
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnExclude(activeTurnIndex)}
+      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.73,6.69c-1.27-2.58-3.85-4.19-6.73-4.19S2.55,4.11,1.27,6.69c-.4,.82-.4,1.8,0,2.62,1.27,2.58,3.85,4.19,6.73,4.19s5.45-1.6,6.73-4.19c.4-.82,.4-1.8,0-2.62Zm-1.79,1.74c-.93,1.9-2.82,3.07-4.93,3.07s-4-1.18-4.93-3.07c-.13-.27-.13-.59,0-.86,.93-1.9,2.82-3.07,4.93-3.07s4,1.18,4.93,3.07c.13,.27,.13,.59,0,.86Z"/><circle cx="8" cy="8" r="2"/></svg>
     </button>
     <button
-      class="btn btn-icon"
+      class="btn btn-icon btn-tooltip"
       class:hide={activeTurnIndex === null}
       disabled={activeTurnIndex && plan.turns[activeTurnIndex].excluded}
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnComplete(activeTurnIndex)}
+      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
     </button>
     <button
       class:hide={activeTurnIndex === null}
-      class="btn btn-icon"
+      class="btn btn-icon btn-tooltip"
       on:mousedown={(event) => event.preventDefault()}
       on:click={deleteTurn(activeTurnIndex)}
+      data-tooltip="Delete"
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.41,8l3.29-3.29c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-3.29,3.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l3.29,3.29-3.29,3.29c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l3.29-3.29,3.29,3.29c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29c.39-.39,.39-1.02,0-1.41l-3.29-3.29Z"/></svg>
     </button>
@@ -384,6 +389,48 @@
 
   .btn-icon + .btn-icon {
     margin-left: 8px;
+  }
+
+  .btn-tooltip {
+    position: relative;
+  }
+
+  .btn-tooltip::before,
+  .btn-tooltip::after {
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    visibility: hidden;
+  }
+
+  .btn-tooltip:hover::before,
+  .btn-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .btn-tooltip::before {
+    background-color: hsl(0, 0%, 20%);
+    border-radius: 4px;
+    color: white;
+    content: attr(data-tooltip);
+    font-size: 13px;
+    line-height: 24px;
+    padding: 0 8px;
+    position: absolute;
+    bottom: -36px;
+    white-space: nowrap;
+  }
+
+  .btn-tooltip::after {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid hsl(0, 0%, 20%);
+    content: "";
+    height: 0;
+    position: absolute;
+    bottom: -12px;
+    width: 0;
   }
 
   .icon {
