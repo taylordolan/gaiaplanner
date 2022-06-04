@@ -38,13 +38,14 @@ todo
 - [x] update highlight color
 - [x] tooltips for buttons
 - [x] icon for "new turn" and "new plan" buttons
-- [ ] confirmation step for deleting a plan
-- [ ] change how completed and excluded relate
-- [ ] consider more prominent styling for selected turn (width, height)
-- [ ] explain keyboard shortcuts
-- [ ] revise keyboard shortcuts for sorting
-- [ ] link to my info
+- [x] revise keyboard shortcuts for sorting
 - [ ] keyboard shortcuts for all turn-level actions
+- [ ] change how completed and excluded relate
+- [ ] confirmation step for deleting a plan
+- [ ] explain keyboard shortcuts
+- [ ] link to my info
 - [ ] update focus states for buttons, etc
 - [ ] responsiveness tweaks
 - [ ] sticky footers
+- [ ] dark mode
+- [ ] transitions

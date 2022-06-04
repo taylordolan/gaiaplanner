@@ -46,18 +46,21 @@
     plan.turns = plan.turns;
     activeTurnIndex++;
     setTimeout(() => {
-      setAdjacentElements();
+      const index = Array.from(activeElement.parentElement.children).indexOf(activeElement);
+      setAdjacentElements(index);
     }, 1);
   }
 
-  let setAdjacentElements = () => {
+  let setAdjacentElements = (i) => {
     upElement = null;
     downElement = null;
     if (activeTurnIndex !== 0) {
-      upElement = activeElement.parentElement.parentElement.previousElementSibling.children[0].children[0];
+      const prevRow = activeElement.parentElement.parentElement.previousElementSibling.children[0];
+      upElement = prevRow.getElementsByTagName("input")[i];
     }
     if (activeTurnIndex !== plan.turns.length - 1) {
-      downElement = activeElement.parentElement.parentElement.nextElementSibling.children[0].children[0];
+      const nextRow = activeElement.parentElement.parentElement.nextElementSibling.children[0];
+      downElement = nextRow.getElementsByTagName("input")[i];
     }
   }
 
@@ -107,7 +110,7 @@
     // I'm using `!== null` because `activeTurnIndex` is 0 when it's the first turn in the plan.
     if (activeTurnIndex !== null) {
       // move turns
-      if (event.altKey) {
+      if (event.altKey && event.shiftKey) {
         if (key === "ArrowUp" && activeTurnIndex !== 0) {
           event.preventDefault();
           moveTurnUp(activeTurnIndex);
@@ -117,16 +120,8 @@
           moveTurnDown(activeTurnIndex);
         }
       }
-      else if (key === "Enter") {
-        const index = activeElement;
-        addTurn(activeTurnIndex + 1);
-        setTimeout(() => {
-          const newTurn = index.parentElement.parentElement.nextElementSibling.children[0].children[0];
-          newTurn.focus();
-        }, 1);
-      }
       // move cursor
-      else if (activeElement && activeElement.classList.contains("input-desc")) {
+      else if (event.altKey) {
         if (upElement && key === "ArrowUp" && activeTurnIndex !== 0) {
           event.preventDefault();
           upElement.focus();
@@ -135,6 +130,15 @@
           event.preventDefault();
           downElement.focus();
         }
+      }
+      // new turn
+      else if (key === "Enter") {
+        const index = activeElement;
+        addTurn(activeTurnIndex + 1);
+        setTimeout(() => {
+          const newTurn = index.parentElement.parentElement.nextElementSibling.children[0].children[0];
+          newTurn.focus();
+        }, 1);
       }
     }
 	}
