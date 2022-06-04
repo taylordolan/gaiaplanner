@@ -37,7 +37,14 @@ todo
 - [x] indicate turns that use more than the available resources
 - [x] update highlight color
 - [x] tooltips for buttons
-- [ ] icon for "new turn" and "new plan" buttons
+- [x] icon for "new turn" and "new plan" buttons
 - [ ] confirmation step for deleting a plan
 - [ ] change how completed and excluded relate
 - [ ] consider more prominent styling for selected turn (width, height)
+- [ ] explain keyboard shortcuts
+- [ ] revise keyboard shortcuts for sorting
+- [ ] link to my info
+- [ ] keyboard shortcuts for all turn-level actions
+- [ ] update focus states for buttons, etc
+- [ ] responsiveness tweaks
+- [ ] sticky footers

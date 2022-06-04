@@ -220,6 +220,7 @@
       class="btn btn-new"
       on:click={addTurn(plan.turns.length)}
     >
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M12.5,7H9V3.5a1,1,0,0,0-2,0V7H3.5a1,1,0,0,0,0,2H7v3.5a1,1,0,0,0,2,0V9h3.5a1,1,0,0,0,0-2Z"/></svg>
       New Turn
     </button>
     <button
@@ -374,10 +375,6 @@
     padding-top: 5px;
   }
 
-  .btn-new {
-    margin-right: auto;
-  }
-
   .btn-icon {
     align-items: center;
     display: flex;
@@ -431,12 +428,6 @@
     position: absolute;
     bottom: -12px;
     width: 0;
-  }
-
-  .icon {
-    fill: hsl(0, 0%, 30%);
-    height: 16px;
-    width: 16px;
   }
 
   .flip-y {

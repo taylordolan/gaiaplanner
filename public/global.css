@@ -99,6 +99,22 @@ select {
   pointer-events: none;
 }
 
+.icon {
+  fill: hsl(0, 0%, 30%);
+  height: 16px;
+  width: 16px;
+}
+
+.btn-new {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.btn-new .icon {
+  margin-right: 4px;
+}
+
 .negative-total {
   border-color: currentColor;
   color: hsl(0, 70%, 70%);
