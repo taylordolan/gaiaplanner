@@ -340,7 +340,7 @@
     content: "";
     width: 700px;
     max-width: 100%;
-    border-top: 2px solid hsl(0, 0%, 96%);
+    border-top: 2px solid var(--gray-1);
     position: relative;
     top: -44px;
   }
@@ -348,8 +348,8 @@
   /* header */
 
   .header {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: var(--sz-1);
+    padding-bottom: var(--sz-1);
     align-items: center;
   }
 
@@ -368,7 +368,7 @@
     flex: 0 1 54px;
     height: 30px;
     justify-content: center;
-    margin-left: 8px;
+    margin-left: var(--sz-2);
     min-width: 0;
     padding: 0 7px; /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
@@ -387,13 +387,13 @@
   }
 
   .totals {
-    padding-bottom: 4px;
-    padding-top: 4px;
+    padding-bottom: var(--sz-1);
+    padding-top: var(--sz-1);
   }
 
   .total {
     flex: 0 1 54px;
-    margin-left: 8px;
+    margin-left: var(--sz-2);
     padding: 0 1px 0 13px; /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
 
@@ -402,8 +402,8 @@
   .footer {
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 4px;
-    padding-top: 4px;
+    padding-bottom: var(--sz-1);
+    padding-top: var(--sz-1);
   }
 
   .btn-icon {
@@ -416,7 +416,7 @@
   }
 
   .btn-icon + .btn-icon {
-    margin-left: 8px;
+    margin-left: var(--sz-2);
   }
 
   .btn-tooltip {
@@ -438,13 +438,13 @@
   }
 
   .btn-tooltip::before {
-    background-color: hsl(0, 0%, 20%);
-    border-radius: 4px;
+    background-color: var(--gray-6);
+    border-radius: var(--radius);
     color: white;
     content: attr(data-tooltip);
     font-size: 13px;
     line-height: 24px;
-    padding: 0 8px;
+    padding: 0 var(--sz-2);
     position: absolute;
     bottom: -36px;
     white-space: nowrap;
@@ -453,11 +453,11 @@
   .btn-tooltip::after {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid hsl(0, 0%, 20%);
+    border-bottom: 6px solid var(--gray-6);
     content: "";
     height: 0;
     position: absolute;
-    bottom: -12px;
+    bottom: calc(var(--sz-3) * -1);
     width: 0;
   }
 
@@ -468,9 +468,9 @@
   /* menu */
 
   .menu {
-    background-color: hsl(0, 0%, 100%);
-    border-radius: 4px;
-    border: 1px solid hsl(0, 0%, 92%);
+    background-color: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-3);
     box-shadow: 0 2px 6px hsl(0, 0%, 0%, 5%);
     display: flex;
     flex-direction: column;
@@ -487,7 +487,7 @@
   }
 
   .btn-menu {
-    background-color: hsl(0, 0%, 96%);
+    background-color: var(--gray-1);
     text-align: left;
     width: 100%;
   }
@@ -504,7 +504,7 @@
 
   .input-area {
     line-height: 24px;
-    margin-top: 16px;
+    margin-top: var(--sz-4);
     padding-bottom: 5px;
     padding-top: 5px;
     resize: none;

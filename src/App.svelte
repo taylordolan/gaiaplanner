@@ -42,7 +42,7 @@
 <style>
   main {
     align-items: center;
-    color: hsl(0, 0%, 20%);
+    color: var(--gray-6);
     display: flex;
     flex-direction: column;
     font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -58,7 +58,7 @@
     content: "";
     width: 700px;
     max-width: 100%;
-    border-top: 2px solid hsl(0, 0%, 96%);
+    border-top: 2px solid var(--gray-1);
     position: absolute;
     left: 0;
     top: 0;

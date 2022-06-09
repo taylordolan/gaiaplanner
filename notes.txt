@@ -42,13 +42,14 @@ todo
 - [x] keyboard shortcuts for all turn-level actions
 - [x] change how completed and excluded states relate
 - [x] update focus states for buttons
-- [ ] responsiveness tweaks
+- [x] responsiveness tweaks
 - [ ] default set of turns as a tutorial
 - [ ] explore style updates
 - [ ] test performance
 - [ ] link to my info
 - [ ] explain keyboard shortcuts
 - [ ] dark mode
+- [ ] a11y fixes
 
 after release
 - [ ] transitions

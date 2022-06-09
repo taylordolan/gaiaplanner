@@ -54,7 +54,7 @@
   .turn {
     display: flex;
     justify-content: center;
-    padding: 4px 0;
+    padding: var(--sz-1) 0;
     width: 100%;
   }
 
@@ -71,13 +71,13 @@
   }
 
   .input-num {
-    margin-left: 8px;
+    margin-left: var(--sz-2);
     padding-right: 0;
     flex: 0 1 54px;
   }
 
   .excluded {
-    color: hsl(0, 0%, 86%);
+    color: var(--gray-4);
   }
 
   .completed {
@@ -87,10 +87,10 @@
 
   .icon {
     fill: currentColor;
-    height: 16px;
+    height: var(--sz-icon-1);
     position: absolute;
     top: 10px;
-    transform: translateX(12px);
-    width: 16px;
+    transform: translateX(var(--sz-3));
+    width: var(--sz-icon-1);
   }
   </style>

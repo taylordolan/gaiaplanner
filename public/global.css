@@ -1,11 +1,11 @@
-/* Box sizing rules */
+/* reset */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin */
 body,
 h1,
 h2,
@@ -19,30 +19,49 @@ dd {
   margin: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
 }
 
-/* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
 
-/* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
 select {
   font: inherit;
+}
+
+/* variables */
+
+:root {
+  --sz-1: 4px;
+  --sz-2: 8px;
+  --sz-3: 12px;
+  --sz-4: 16px;
+  --sz-5: 20px;
+  --sz-icon-1: 16px;
+  --sz-icon-2: 30px;
+  --radius: 4px;
+
+  --blue: hsl(210, 100%, 50%);
+  --red: hsl(0, 70%, 70%);
+  --white: hsl(0, 0%, 100%);
+  --gray-1: hsl(0, 0%, 96%);
+  --gray-2: hsl(0, 0%, 94%);
+  --gray-3: hsl(0, 0%, 92%);
+  --gray-4: hsl(0, 0%, 86%);
+  --gray-5: hsl(0, 0%, 30%);
+  --gray-6: hsl(0, 0%, 20%);
 }
 
 /* global styles */
@@ -54,52 +73,52 @@ select {
 .row {
   display: flex;
   max-width: 100%;
-  padding: 0 20px;
+  padding: 0 var(--sz-5);
   position: relative;
   width: 700px;
 }
 
 .input {
-  border-radius: 4px;
-  border: 1px solid hsl(0, 0%, 86%);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-4);
   color: inherit;
   line-height: 34px;
   min-width: 0;
-  padding: 0 12px;
+  padding: 0 var(--sz-3);
 }
 
 .input:focus {
-  border-color: hsl(210, 100%, 50%);
-  outline-color: hsl(210, 100%, 50%);
+  border-color: var(--blue);
+  outline-color: var(--blue);
   outline-offset: -1px;
   outline-style: solid;
   outline-width: 2px;
 }
 
 .btn {
-  background-color: hsl(0, 0%, 96%);
+  background-color: var(--gray-1);
   border: 0;
-  border-radius: 4px;
-  color: hsl(0, 0%, 30%);
+  border-radius: var(--radius);
+  color: var(--gray-5);
   cursor: pointer;
   height: 36px;
   line-height: 34px;
-  padding: 0 12px;
+  padding: 0 var(--sz-3);
 }
 
 .btn:focus {
-  outline-color: hsl(210, 100%, 50%);
+  outline-color: var(--blue);
   outline-offset: -1px;
   outline-style: solid;
   outline-width: 2px;
 }
 
 .btn:hover {
-  background-color: hsl(0, 0%, 94%);
+  background-color: var(--gray-2);
 }
 
 .btn:active {
-  background-color: hsl(0, 0%, 92%);
+  background-color: var(--gray-3);
 }
 
 .btn:disabled {
@@ -108,9 +127,9 @@ select {
 }
 
 .icon {
-  fill: hsl(0, 0%, 30%);
-  height: 16px;
-  width: 16px;
+  fill: var(--gray-5);
+  height: var(--sz-icon-1);
+  width: var(--sz-icon-1);
 }
 
 .btn-new {
@@ -120,10 +139,10 @@ select {
 }
 
 .btn-new .icon {
-  margin-right: 4px;
+  margin-right: var(--sz-1);
 }
 
 .negative-total {
   border-color: currentColor;
-  color: hsl(0, 70%, 70%);
+  color: var(--red);
 }
