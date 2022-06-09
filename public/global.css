@@ -86,6 +86,13 @@ select {
   padding: 0 12px;
 }
 
+.btn:focus {
+  outline-color: hsl(210, 100%, 50%);
+  outline-offset: -1px;
+  outline-style: solid;
+  outline-width: 2px;
+}
+
 .btn:hover {
   background-color: hsl(0, 0%, 94%);
 }

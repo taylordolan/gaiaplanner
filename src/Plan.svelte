@@ -63,11 +63,13 @@
   }
 
   let toggleTurnExclude = (index) => {
+    plan.turns[index].completed = false;
     plan.turns[index].excluded = !plan.turns[index].excluded;
     plan.turns = plan.turns;
   }
 
   let toggleTurnComplete = (index) => {
+    plan.turns[index].excluded = false;
     plan.turns[index].completed = !plan.turns[index].completed;
     plan.turns = plan.turns;
   }
@@ -273,7 +275,6 @@
   <button
     class="btn btn-icon btn-tooltip"
     class:hide={activeTurnIndex === null}
-    disabled={activeTurnIndex && plan.turns[activeTurnIndex].excluded}
     on:mousedown={(event) => event.preventDefault()}
     on:click={toggleTurnComplete(activeTurnIndex)}
     data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
@@ -283,7 +284,6 @@
     <button
       class="btn btn-icon btn-tooltip"
       class:hide={activeTurnIndex === null}
-      disabled={activeTurnIndex && plan.turns[activeTurnIndex].completed}
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnExclude(activeTurnIndex)}
       data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
@@ -489,7 +489,7 @@
   }
 
   .btn-menu:not(:hover) {
-    background-color: white;
+    background-color: transparent;
   }
 
   .hide {

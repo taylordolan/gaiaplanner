@@ -41,9 +41,8 @@ todo
 - [x] revise keyboard shortcuts for sorting
 - [x] keyboard shortcuts for all turn-level actions
 - [x] change how completed and excluded states relate
-- [ ] update focus states for buttons, etc
+- [x] update focus states for buttons
 - [ ] responsiveness tweaks
-- [ ] sticky footers
 - [ ] explore style updates
 - [ ] test performance
 - [ ] link to my info
@@ -52,4 +51,6 @@ todo
 - [ ] transitions
 
 after release
+- [ ] sticky footers
 - [ ] confirmation step for deleting a plan
+- [ ] pixel-perfect resource icons
