@@ -54,16 +54,12 @@
   .turn {
     display: flex;
     justify-content: center;
-    padding: 5px 0;
+    padding: 4px 0;
     width: 100%;
   }
 
   .row {
     position: relative;
-  }
-
-  .input {
-    min-width: 0;
   }
 
   .input.in-active-row:not(:focus) {

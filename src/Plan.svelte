@@ -327,7 +327,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 45px 0;
+    padding: 44px 0;
     width: 100%;
     position: relative;
   }
@@ -342,14 +342,14 @@
     max-width: 100%;
     border-top: 2px solid hsl(0, 0%, 96%);
     position: relative;
-    top: -45px;
+    top: -44px;
   }
 
   /* header */
 
   .header {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     align-items: center;
   }
 
@@ -365,10 +365,12 @@
   .resource-icon-wrapper {
     align-items: center;
     display: flex;
+    flex: 0 1 54px;
     height: 30px;
     justify-content: center;
     margin-left: 8px;
-    width: 54px;
+    min-width: 0;
+    padding: 0 7px; /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
 
   /* totals */
@@ -376,22 +378,23 @@
   .totals-label {
     flex: 1 1 240px;
     min-width: 0;
+    padding: 0 13px 0 13px; /* must equal input-desc border + padding so they stay aligned when shrinking down */
   }
 
   .totals-label,
   .total {
     line-height: 36px;
-    padding: 0 12px;
   }
 
   .totals {
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-top: 4px;
   }
 
   .total {
+    flex: 0 1 54px;
     margin-left: 8px;
-    width: 54px;
+    padding: 0 1px 0 13px; /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
 
   /* footer */
@@ -399,7 +402,8 @@
   .footer {
     display: flex;
     justify-content: flex-end;
-    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-top: 4px;
   }
 
   .btn-icon {

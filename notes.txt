@@ -43,14 +43,16 @@ todo
 - [x] change how completed and excluded states relate
 - [x] update focus states for buttons
 - [ ] responsiveness tweaks
+- [ ] default set of turns as a tutorial
 - [ ] explore style updates
 - [ ] test performance
 - [ ] link to my info
 - [ ] explain keyboard shortcuts
 - [ ] dark mode
-- [ ] transitions
 
 after release
+- [ ] transitions
 - [ ] sticky footers
 - [ ] confirmation step for deleting a plan
 - [ ] pixel-perfect resource icons
+- [ ] explain red inputs

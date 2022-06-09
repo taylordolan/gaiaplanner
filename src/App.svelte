@@ -50,8 +50,8 @@
   }
 
   .row {
-    padding-top: 45px;
-    padding-bottom: 45px;
+    padding-top: 44px;
+    padding-bottom: 44px;
   }
 
   .row::before {
