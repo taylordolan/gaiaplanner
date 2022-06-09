@@ -40,6 +40,7 @@ todo
 - [x] icon for "new turn" and "new plan" buttons
 - [x] revise keyboard shortcuts for sorting
 - [ ] keyboard shortcuts for all turn-level actions
+- [ ] fix bug: keyboard shortcuts for moving focus up/down break for completed turns
 - [ ] change how completed and excluded relate
 - [ ] confirmation step for deleting a plan
 - [ ] explain keyboard shortcuts
@@ -47,5 +48,7 @@ todo
 - [ ] update focus states for buttons, etc
 - [ ] responsiveness tweaks
 - [ ] sticky footers
+- [ ] explore style updates
+- [ ] test performance
 - [ ] dark mode
 - [ ] transitions

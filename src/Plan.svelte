@@ -21,7 +21,6 @@
         greatest = next;
       }
     }
-    // plan.turns = [...plan.turns, $newTurn(greatest + 1)];
     plan.turns.splice(index, 0, $newTurn(greatest + 1))
     plan.turns = plan.turns;
   }
@@ -77,7 +76,8 @@
   const deleteTurn = (index) => {
     let nextTurn = null;
     if (index !== plan.turns.length - 1) {
-      nextTurn = activeElement.parentElement.parentElement.nextElementSibling.children[0].children[0];
+      const nextRow = activeElement.parentElement.parentElement.nextElementSibling.children[0];
+      nextTurn = nextRow.getElementsByTagName("input")[0];
     }
     plan.turns.splice(index, 1);
     plan.turns = plan.turns;
@@ -103,8 +103,14 @@
     return totals;
   }
 
+  // keyboard shortcuts
   function handleKeydown(event) {
+
 		const key = event.key;
+    const keyCode = event.keyCode;
+    const commaCode = 188;
+    const periodCode = 190;
+    const slashCode = 191;
     // `activeTurnIndex` is null for plans that don't have focus.
     // If I don't check this value, keyboard events will be repeated for each plan that exists.
     // I'm using `!== null` because `activeTurnIndex` is 0 when it's the first turn in the plan.
@@ -120,8 +126,22 @@
           moveTurnDown(activeTurnIndex);
         }
       }
+      // toggle turn complete
+      else if (event.altKey && keyCode === commaCode) {
+        event.preventDefault();
+        toggleTurnComplete(activeTurnIndex);
+      }
+      // toggle turn exclude
+      else if (event.altKey && keyCode === periodCode) {
+        event.preventDefault();
+        toggleTurnExclude(activeTurnIndex);
+      }
+      // turn delete
+      else if (event.altKey && keyCode === slashCode) {
+        event.preventDefault();
+        deleteTurn(activeTurnIndex);
+      }
       // move cursor
-      else if (event.altKey) {
         if (upElement && key === "ArrowUp" && activeTurnIndex !== 0) {
           event.preventDefault();
           upElement.focus();
@@ -130,7 +150,6 @@
           event.preventDefault();
           downElement.focus();
         }
-      }
       // new turn
       else if (key === "Enter") {
         const index = activeElement;
@@ -139,6 +158,9 @@
           const newTurn = index.parentElement.parentElement.nextElementSibling.children[0].children[0];
           newTurn.focus();
         }, 1);
+      }
+      else {
+        console.log(event.keyCode);
       }
     }
 	}
@@ -228,25 +250,35 @@
       New Turn
     </button>
     <button
-      class="btn btn-icon btn-tooltip"
-      class:hide={activeTurnIndex === null}
-      disabled={activeTurnIndex === 0}
-      on:mousedown={(event) => event.preventDefault()}
-      on:click={moveTurnUp(activeTurnIndex)}
-      data-tooltip="Move up"
+    class="btn btn-icon btn-tooltip"
+    class:hide={activeTurnIndex === null}
+    disabled={activeTurnIndex === 0}
+    on:mousedown={(event) => event.preventDefault()}
+    on:click={moveTurnUp(activeTurnIndex)}
+    data-tooltip="Move up"
     >
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
-    </button>
-    <button
-      class="btn btn-icon btn-tooltip"
-      class:hide={activeTurnIndex === null}
-      disabled={activeTurnIndex === plan.turns.length - 1}
-      on:mousedown={(event) => event.preventDefault()}
-      on:click={moveTurnDown(activeTurnIndex)}
-      data-tooltip="Move down"
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
+  </button>
+  <button
+    class="btn btn-icon btn-tooltip"
+    class:hide={activeTurnIndex === null}
+    disabled={activeTurnIndex === plan.turns.length - 1}
+    on:mousedown={(event) => event.preventDefault()}
+    on:click={moveTurnDown(activeTurnIndex)}
+    data-tooltip="Move down"
     >
-      <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
-    </button>
+    <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
+  </button>
+  <button
+    class="btn btn-icon btn-tooltip"
+    class:hide={activeTurnIndex === null}
+    disabled={activeTurnIndex && plan.turns[activeTurnIndex].excluded}
+    on:mousedown={(event) => event.preventDefault()}
+    on:click={toggleTurnComplete(activeTurnIndex)}
+    data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
+  >
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
+  </button>
     <button
       class="btn btn-icon btn-tooltip"
       class:hide={activeTurnIndex === null}
@@ -256,16 +288,6 @@
       data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.73,6.69c-1.27-2.58-3.85-4.19-6.73-4.19S2.55,4.11,1.27,6.69c-.4,.82-.4,1.8,0,2.62,1.27,2.58,3.85,4.19,6.73,4.19s5.45-1.6,6.73-4.19c.4-.82,.4-1.8,0-2.62Zm-1.79,1.74c-.93,1.9-2.82,3.07-4.93,3.07s-4-1.18-4.93-3.07c-.13-.27-.13-.59,0-.86,.93-1.9,2.82-3.07,4.93-3.07s4,1.18,4.93,3.07c.13,.27,.13,.59,0,.86Z"/><circle cx="8" cy="8" r="2"/></svg>
-    </button>
-    <button
-      class="btn btn-icon btn-tooltip"
-      class:hide={activeTurnIndex === null}
-      disabled={activeTurnIndex && plan.turns[activeTurnIndex].excluded}
-      on:mousedown={(event) => event.preventDefault()}
-      on:click={toggleTurnComplete(activeTurnIndex)}
-      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
-    >
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
     </button>
     <button
       class:hide={activeTurnIndex === null}
