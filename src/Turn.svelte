@@ -16,8 +16,7 @@
   let handleFocus = (event) => {
     activeTurnIndex = thisTurnIndex;
     activeElement = event.target;
-    const index = Array.from(activeElement.parentElement.children).indexOf(activeElement);
-    setAdjacentElements(index);
+    setAdjacentElements();
   }
 </script>
 

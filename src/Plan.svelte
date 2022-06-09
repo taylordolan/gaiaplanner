@@ -45,21 +45,20 @@
     plan.turns = plan.turns;
     activeTurnIndex++;
     setTimeout(() => {
-      const index = Array.from(activeElement.parentElement.children).indexOf(activeElement);
-      setAdjacentElements(index);
+      setAdjacentElements();
     }, 1);
   }
 
-  let setAdjacentElements = (i) => {
+  let setAdjacentElements = () => {
     upElement = null;
     downElement = null;
     if (activeTurnIndex !== 0) {
       const prevRow = activeElement.parentElement.parentElement.previousElementSibling.children[0];
-      upElement = prevRow.getElementsByTagName("input")[i];
+      upElement = prevRow.getElementsByTagName("input")[0];
     }
     if (activeTurnIndex !== plan.turns.length - 1) {
       const nextRow = activeElement.parentElement.parentElement.nextElementSibling.children[0];
-      downElement = nextRow.getElementsByTagName("input")[i];
+      downElement = nextRow.getElementsByTagName("input")[0];
     }
   }
 
@@ -115,19 +114,8 @@
     // If I don't check this value, keyboard events will be repeated for each plan that exists.
     // I'm using `!== null` because `activeTurnIndex` is 0 when it's the first turn in the plan.
     if (activeTurnIndex !== null) {
-      // move turns
-      if (event.altKey && event.shiftKey) {
-        if (key === "ArrowUp" && activeTurnIndex !== 0) {
-          event.preventDefault();
-          moveTurnUp(activeTurnIndex);
-        }
-        else if (key === "ArrowDown" && activeTurnIndex !== plan.turns.length - 1) {
-          event.preventDefault();
-          moveTurnDown(activeTurnIndex);
-        }
-      }
       // toggle turn complete
-      else if (event.altKey && keyCode === commaCode) {
+      if (event.altKey && keyCode === commaCode) {
         event.preventDefault();
         toggleTurnComplete(activeTurnIndex);
       }
@@ -141,15 +129,17 @@
         event.preventDefault();
         deleteTurn(activeTurnIndex);
       }
-      // move cursor
-        if (upElement && key === "ArrowUp" && activeTurnIndex !== 0) {
+      // move turns
+      else if (event.altKey) {
+        if (key === "ArrowUp" && activeTurnIndex !== 0) {
           event.preventDefault();
-          upElement.focus();
+          moveTurnUp(activeTurnIndex);
         }
-        else if (downElement && key === "ArrowDown" && activeTurnIndex !== plan.turns.length - 1) {
+        else if (key === "ArrowDown" && activeTurnIndex !== plan.turns.length - 1) {
           event.preventDefault();
-          downElement.focus();
+          moveTurnDown(activeTurnIndex);
         }
+      }
       // new turn
       else if (key === "Enter") {
         const index = activeElement;
@@ -158,6 +148,17 @@
           const newTurn = index.parentElement.parentElement.nextElementSibling.children[0].children[0];
           newTurn.focus();
         }, 1);
+      }
+      // move cursor
+      else if (activeElement && activeElement.classList.contains("input-desc")) {
+        if (upElement && key === "ArrowUp" && activeTurnIndex !== 0) {
+          event.preventDefault();
+          upElement.focus();
+        }
+        else if (downElement && key === "ArrowDown" && activeTurnIndex !== plan.turns.length - 1) {
+          event.preventDefault();
+          downElement.focus();
+        }
       }
       else {
         console.log(event.keyCode);
