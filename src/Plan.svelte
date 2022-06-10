@@ -53,11 +53,11 @@
     upElement = null;
     downElement = null;
     if (activeTurnIndex !== 0) {
-      const prevRow = activeElement.parentElement.parentElement.previousElementSibling.children[0];
+      const prevRow = activeElement.parentElement.previousElementSibling;
       upElement = prevRow.getElementsByTagName("input")[0];
     }
     if (activeTurnIndex !== plan.turns.length - 1) {
-      const nextRow = activeElement.parentElement.parentElement.nextElementSibling.children[0];
+      const nextRow = activeElement.parentElement.nextElementSibling;
       downElement = nextRow.getElementsByTagName("input")[0];
     }
   }
@@ -77,7 +77,7 @@
   const deleteTurn = (index) => {
     let nextTurn = null;
     if (index !== plan.turns.length - 1) {
-      const nextRow = activeElement.parentElement.parentElement.nextElementSibling.children[0];
+      const nextRow = activeElement.parentElement.nextElementSibling;
       nextTurn = nextRow.getElementsByTagName("input")[0];
     }
     plan.turns.splice(index, 1);
@@ -104,7 +104,7 @@
     return totals;
   }
 
-  const handleOverflowButtonBlur = (event) => {
+  const handleOverflowButtonBlur = () => {
     const menu = document.getElementsByClassName("menu")[0];
     setTimeout(() => {
       if (!menu.contains(document.activeElement)) {
@@ -153,10 +153,9 @@
       }
       // new turn
       else if (key === "Enter") {
-        const index = activeElement;
         addTurn(activeTurnIndex + 1);
         setTimeout(() => {
-          const newTurn = index.parentElement.parentElement.nextElementSibling.children[0].children[0];
+          const newTurn = activeElement.parentElement.nextElementSibling.children[0];
           newTurn.focus();
         }, 1);
       }

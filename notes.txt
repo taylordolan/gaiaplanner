@@ -44,7 +44,7 @@ todo
 - [x] update focus states for buttons
 - [x] responsiveness tweaks
 - [x] close overflow menu on button blur
-- [ ] fix bug: focus going to the wrong element after creating a new turn
+- [x] fix bug where focus goes to the wrong element after creating a new turn
 - [ ] default set of turns as a tutorial
 - [ ] explore style updates
 - [ ] test performance
