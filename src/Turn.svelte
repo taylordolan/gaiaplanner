@@ -20,60 +20,48 @@
   }
 </script>
 
-<div class="turn">
-  <div class="row" class:in-active-row={thisTurnIndex === activeTurnIndex}>
-    {#if turn.completed}
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
-    {/if}
-    <input
-      bind:value={turn.description}
-      class="input input-desc"
-      class:completed={turn.completed}
-      class:excluded={turn.excluded}
-      class:in-active-row={thisTurnIndex === activeTurnIndex}
-      data-turn={thisTurnIndex}
-      on:blur={handleBlur}
-      on:focus={handleFocus}
-    >
-    {#each Object.entries(turn.resources) as resource}
-    <input
-      bind:value={turn.resources[resource[0]]}
-      class="input input-num"
-      class:negative-total={turn.resources[resource[0]] < 0 && runningTotals[resource[0]] < 0}
-      class:excluded={turn.excluded}
-      class:in-active-row={thisTurnIndex === activeTurnIndex}
-      data-turn={thisTurnIndex}
-      on:blur={handleBlur} on:focus={handleFocus}
-      type="number"
-    >
-    {/each}
-  </div>
+<div class="row" class:in-active-row={thisTurnIndex === activeTurnIndex}>
+  {#if turn.completed}
+  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
+  {/if}
+  <input
+    bind:value={turn.description}
+    class="input input-desc"
+    class:completed={turn.completed}
+    class:excluded={turn.excluded}
+    class:in-active-row={thisTurnIndex === activeTurnIndex}
+    data-turn={thisTurnIndex}
+    on:blur={handleBlur}
+    on:focus={handleFocus}
+  >
+  {#each Object.entries(turn.resources) as resource}
+  <input
+    bind:value={turn.resources[resource[0]]}
+    class="input input-num"
+    class:negative-total={turn.resources[resource[0]] < 0 && runningTotals[resource[0]] < 0}
+    class:excluded={turn.excluded}
+    class:in-active-row={thisTurnIndex === activeTurnIndex}
+    data-turn={thisTurnIndex}
+    on:blur={handleBlur}
+    on:focus={handleFocus}
+    type="number"
+  >
+  {/each}
 </div>
 
 <style>
-  .turn {
-    display: flex;
-    justify-content: center;
-    padding: var(--sz-1) 0;
-    width: 100%;
-  }
-
-  .row {
-    position: relative;
-  }
-
   .input.in-active-row:not(:focus) {
     border-color: hsl(210, 100%, 60%);
   }
 
   .input-desc {
-    flex: 1 1 240px;
+    flex: 1 1 auto;
   }
 
   .input-num {
     margin-left: var(--sz-2);
     padding-right: 0;
-    flex: 0 1 54px;
+    flex: 0 0 var(--width-input-num);
   }
 
   .excluded {
@@ -89,7 +77,7 @@
     fill: currentColor;
     height: var(--sz-icon-1);
     position: absolute;
-    top: 10px;
+    top: 14px;
     transform: translateX(var(--sz-3));
     width: var(--sz-icon-1);
   }

@@ -51,7 +51,13 @@ select {
   --sz-5: 20px;
   --sz-icon-1: 16px;
   --sz-icon-2: 30px;
+
+  --font-size: 15px;
+  --border: 1px;
   --radius: 4px;
+  --max-width: 720px;
+  --width-input-num: 60px;
+  --height-input: 36px;
 
   --blue: hsl(210, 100%, 50%);
   --red: hsl(0, 70%, 70%);
@@ -64,6 +70,13 @@ select {
   --gray-6: hsl(0, 0%, 20%);
 }
 
+@media (max-width: 660px) {
+  :root {
+    --font-size: 14px;
+    --width-input-num: 48px;
+  }
+}
+
 /* global styles */
 
 *::selection {
@@ -71,28 +84,21 @@ select {
 }
 
 .row {
+  align-items: center;
   display: flex;
   max-width: 100%;
-  padding: 0 var(--sz-5);
+  padding: var(--sz-1) var(--sz-5);
   position: relative;
-  width: 700px;
+  width: var(--max-width);
 }
 
 .input {
   border-radius: var(--radius);
-  border: 1px solid var(--gray-4);
+  border: var(--border) solid var(--gray-4);
   color: inherit;
-  line-height: 34px;
+  line-height: calc(var(--height-input) - var(--border) * 2);
   min-width: 0;
-  padding: 0 var(--sz-3);
-}
-
-.input:focus {
-  border-color: var(--blue);
-  outline-color: var(--blue);
-  outline-offset: -1px;
-  outline-style: solid;
-  outline-width: 2px;
+  padding: 0 calc(var(--sz-3) - var(--border)); /* so border + padding = --sz-3 */
 }
 
 .btn {
@@ -101,16 +107,16 @@ select {
   border-radius: var(--radius);
   color: var(--gray-5);
   cursor: pointer;
-  height: 36px;
-  line-height: 34px;
+  height: var(--height-input);
   padding: 0 var(--sz-3);
 }
 
+.input:focus,
 .btn:focus {
   outline-color: var(--blue);
-  outline-offset: -1px;
+  outline-offset: calc(var(--border) * -1);
   outline-style: solid;
-  outline-width: 2px;
+  outline-width: calc(var(--border) * 2);
 }
 
 .btn:hover {
@@ -140,6 +146,28 @@ select {
 
 .btn-new .icon {
   margin-right: var(--sz-1);
+}
+
+.plan {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--height-input) + var(--sz-2)) 0;
+  width: 100%;
+  position: relative;
+}
+
+.plan:first-child {
+  margin-top: var(--sz-4);
+}
+
+.plan:not(:first-child):before {
+  content: "";
+  width: var(--max-width);
+  max-width: 100%;
+  border-top: 2px solid var(--gray-1);
+  position: relative;
+  top: calc((var(--height-input) + var(--sz-2)) * -1);
 }
 
 .negative-total {

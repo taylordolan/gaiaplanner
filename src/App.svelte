@@ -31,40 +31,20 @@
     {duplicatePlan}
   />
   {/each}
-  <div class="row">
-    <button class="btn btn-new" on:click={addPlan}>
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M12.5,7H9V3.5a1,1,0,0,0-2,0V7H3.5a1,1,0,0,0,0,2H7v3.5a1,1,0,0,0,2,0V9h3.5a1,1,0,0,0,0-2Z"/></svg>
-      New Plan
-    </button>
+  <div class="plan">
+    <div class="row">
+      <button class="btn btn-new" on:click={addPlan}>
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M12.5,7H9V3.5a1,1,0,0,0-2,0V7H3.5a1,1,0,0,0,0,2H7v3.5a1,1,0,0,0,2,0V9h3.5a1,1,0,0,0,0-2Z"/></svg>
+        New Plan
+      </button>
+    </div>
   </div>
 </main>
 
 <style>
   main {
-    align-items: center;
     color: var(--gray-6);
-    display: flex;
-    flex-direction: column;
     font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 15px;
-  }
-
-  .row {
-    padding-top: 44px;
-    padding-bottom: 44px;
-  }
-
-  .row::before {
-    content: "";
-    width: 700px;
-    max-width: 100%;
-    border-top: 2px solid var(--gray-1);
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  .btn {
-    align-self: flex-start;
+    font-size: var(--font-size);
   }
 </style>

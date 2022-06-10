@@ -179,7 +179,7 @@
 <svelte:window on:keydown={handleKeydown}/>
 
 <div class="plan">
-  <div class="row header">
+  <div class="row">
     <input bind:value={plan.label} class="input input-title">
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -236,15 +236,15 @@
     thisTurnIndex={i}
   />
   {/each}
-  <div class="row totals">
+  <div class="row">
     <span class="totals-label">Totals:</span>
-    <span class="total" class:negative-total={totalC < 0}>{totalC}c</span>
-    <span class="total" class:negative-total={totalO < 0}>{totalO}o</span>
-    <span class="total" class:negative-total={totalK < 0}>{totalK}k</span>
-    <span class="total" class:negative-total={totalQ < 0}>{totalQ}q</span>
-    <span class="total" class:negative-total={totalV < 0}>{totalV}vp</span>
+    <span class="totals-value" class:negative-total={totalC < 0}>{totalC}c</span>
+    <span class="totals-value" class:negative-total={totalO < 0}>{totalO}o</span>
+    <span class="totals-value" class:negative-total={totalK < 0}>{totalK}k</span>
+    <span class="totals-value" class:negative-total={totalQ < 0}>{totalQ}q</span>
+    <span class="totals-value" class:negative-total={totalV < 0}>{totalV}vp</span>
   </div>
-  <div class="row footer">
+  <div class="row row-footer">
     <button
       class="btn btn-new"
       on:click={addTurn(plan.turns.length)}
@@ -323,38 +323,8 @@
 </div>
 
 <style>
-  .plan {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding: 44px 0;
-    width: 100%;
-    position: relative;
-  }
-
-  .plan:first-child {
-    margin-top: 15px;
-  }
-
-  .plan:not(:first-child):before {
-    content: "";
-    width: 700px;
-    max-width: 100%;
-    border-top: 2px solid var(--gray-1);
-    position: relative;
-    top: -44px;
-  }
-
-  /* header */
-
-  .header {
-    padding-top: var(--sz-1);
-    padding-bottom: var(--sz-1);
-    align-items: center;
-  }
-
   .input-title {
-    flex: 1 1 240px;
+    flex: 1 1 auto;
     font-weight: 500;
   }
 
@@ -365,54 +335,46 @@
   .resource-icon-wrapper {
     align-items: center;
     display: flex;
-    flex: 0 1 54px;
-    height: 30px;
+    flex: 0 0 var(--width-input-num);
+    height: var(--sz-icon-2);
     justify-content: center;
     margin-left: var(--sz-2);
     min-width: 0;
-    padding: 0 7px; /* must equal input-num border + padding so they stay aligned when shrinking down */
+    padding: 0 calc(var(--sz-3) / 2); /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
 
   /* totals */
 
-  .totals-label {
-    flex: 1 1 240px;
-    min-width: 0;
-    padding: 0 13px 0 13px; /* must equal input-desc border + padding so they stay aligned when shrinking down */
-  }
-
   .totals-label,
-  .total {
-    line-height: 36px;
+  .totals-value {
+    line-height: var(--height-input);
   }
 
-  .totals {
-    padding-bottom: var(--sz-1);
-    padding-top: var(--sz-1);
+  .totals-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0 var(--sz-3); /* must equal input-desc border + padding so they stay aligned when shrinking down */
   }
 
-  .total {
-    flex: 0 1 54px;
+  .totals-value {
+    flex: 0 0 var(--width-input-num);
     margin-left: var(--sz-2);
-    padding: 0 1px 0 13px; /* must equal input-num border + padding so they stay aligned when shrinking down */
+    padding: 0 var(--border) 0 var(--sz-3); /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
 
   /* footer */
 
-  .footer {
-    display: flex;
+  .row-footer {
     justify-content: flex-end;
-    padding-bottom: var(--sz-1);
-    padding-top: var(--sz-1);
   }
 
   .btn-icon {
     align-items: center;
     display: flex;
-    height: 36px;
+    height: var(--height-input);
     justify-content: center;
     padding: 0;
-    width: 36px;
+    width: var(--height-input);
   }
 
   .btn-icon + .btn-icon {
@@ -440,7 +402,7 @@
   .btn-tooltip::before {
     background-color: var(--gray-6);
     border-radius: var(--radius);
-    color: white;
+    color: var(--white);
     content: attr(data-tooltip);
     font-size: 13px;
     line-height: 24px;
@@ -469,16 +431,16 @@
 
   .menu {
     background-color: var(--white);
-    border-radius: var(--radius);
-    border: 1px solid var(--gray-3);
-    box-shadow: 0 2px 6px hsl(0, 0%, 0%, 5%);
+    border-radius: 8px;
+    border: 1px solid var(--gray-4);
+    box-shadow: 0 2px 8px hsl(0, 0%, 0%, 4%);
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 6px;
+    padding: 8px;
     position: absolute;
     top: 48px;
-    width: 168px;
+    width: 196px;
     z-index: 1;
   }
 
@@ -487,13 +449,13 @@
   }
 
   .btn-menu {
-    background-color: var(--gray-1);
+    background-color: transparent;
     text-align: left;
     width: 100%;
   }
 
-  .btn-menu:not(:hover) {
-    background-color: transparent;
+  .btn-menu:hover {
+    background-color: var(--gray-1);
   }
 
   .hide {
