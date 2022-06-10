@@ -43,6 +43,7 @@ todo
 - [x] change how completed and excluded states relate
 - [x] update focus states for buttons
 - [x] responsiveness tweaks
+- [x] close overflow menu on button blur
 - [ ] fix bug: focus going to the wrong element after creating a new turn
 - [ ] default set of turns as a tutorial
 - [ ] explore style updates
@@ -58,4 +59,3 @@ after release
 - [ ] confirmation step for deleting a plan
 - [ ] pixel-perfect resource icons
 - [ ] explain red inputs
-- [ ] close overflow menu on button blur (instead of as part of other actions)

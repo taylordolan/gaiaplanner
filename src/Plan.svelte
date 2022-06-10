@@ -104,6 +104,15 @@
     return totals;
   }
 
+  const handleOverflowButtonBlur = (event) => {
+    const menu = document.getElementsByClassName("menu")[0];
+    setTimeout(() => {
+      if (!menu.contains(document.activeElement)) {
+        showMenu = false;
+      }
+    }, 1);
+  }
+
   // keyboard shortcuts
   function handleKeydown(event) {
 
@@ -252,38 +261,35 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M12.5,7H9V3.5a1,1,0,0,0-2,0V7H3.5a1,1,0,0,0,0,2H7v3.5a1,1,0,0,0,2,0V9h3.5a1,1,0,0,0,0-2Z"/></svg>
       New Turn
     </button>
-    <button
-    class="btn btn-icon btn-tooltip"
-    class:hide={activeTurnIndex === null}
-    disabled={activeTurnIndex === 0}
-    on:mousedown={(event) => event.preventDefault()}
-    on:click={moveTurnUp(activeTurnIndex)}
-    data-tooltip="Move up"
-    >
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
-  </button>
-  <button
-    class="btn btn-icon btn-tooltip"
-    class:hide={activeTurnIndex === null}
-    disabled={activeTurnIndex === plan.turns.length - 1}
-    on:mousedown={(event) => event.preventDefault()}
-    on:click={moveTurnDown(activeTurnIndex)}
-    data-tooltip="Move down"
-    >
-    <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
-  </button>
-  <button
-    class="btn btn-icon btn-tooltip"
-    class:hide={activeTurnIndex === null}
-    on:mousedown={(event) => event.preventDefault()}
-    on:click={toggleTurnComplete(activeTurnIndex)}
-    data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
-  >
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
-  </button>
+    {#if activeTurnIndex}
     <button
       class="btn btn-icon btn-tooltip"
-      class:hide={activeTurnIndex === null}
+      disabled={activeTurnIndex === 0}
+      on:mousedown={(event) => event.preventDefault()}
+      on:click={moveTurnUp(activeTurnIndex)}
+      data-tooltip="Move up"
+    >
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
+    </button>
+    <button
+      class="btn btn-icon btn-tooltip"
+      disabled={activeTurnIndex === plan.turns.length - 1}
+      on:mousedown={(event) => event.preventDefault()}
+      on:click={moveTurnDown(activeTurnIndex)}
+      data-tooltip="Move down"
+    >
+      <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
+    </button>
+    <button
+      class="btn btn-icon btn-tooltip"
+      on:mousedown={(event) => event.preventDefault()}
+      on:click={toggleTurnComplete(activeTurnIndex)}
+      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
+    >
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
+    </button>
+    <button
+      class="btn btn-icon btn-tooltip"
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnExclude(activeTurnIndex)}
       data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
@@ -291,7 +297,6 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.73,6.69c-1.27-2.58-3.85-4.19-6.73-4.19S2.55,4.11,1.27,6.69c-.4,.82-.4,1.8,0,2.62,1.27,2.58,3.85,4.19,6.73,4.19s5.45-1.6,6.73-4.19c.4-.82,.4-1.8,0-2.62Zm-1.79,1.74c-.93,1.9-2.82,3.07-4.93,3.07s-4-1.18-4.93-3.07c-.13-.27-.13-.59,0-.86,.93-1.9,2.82-3.07,4.93-3.07s4,1.18,4.93,3.07c.13,.27,.13,.59,0,.86Z"/><circle cx="8" cy="8" r="2"/></svg>
     </button>
     <button
-      class:hide={activeTurnIndex === null}
       class="btn btn-icon btn-tooltip"
       on:mousedown={(event) => event.preventDefault()}
       on:click={deleteTurn(activeTurnIndex)}
@@ -299,13 +304,16 @@
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.41,8l3.29-3.29c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-3.29,3.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l3.29,3.29-3.29,3.29c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l3.29-3.29,3.29,3.29c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29c.39-.39,.39-1.02,0-1.41l-3.29-3.29Z"/></svg>
     </button>
+    {/if}
     <button
       class="btn btn-icon"
       on:click={() => showMenu = !showMenu}
+      on:blur={handleOverflowButtonBlur}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="1.5"/><circle cx="3" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg>
     </button>
-    <ul class="menu" class:hide={!showMenu}>
+    {#if showMenu}
+    <ul class="menu">
       {#if !plan.showNotes}
       <li><button class="btn btn-menu" on:click={() => {plan.showNotes = true; showMenu = false}}>Show Notes</button></li>
       {:else}
@@ -314,10 +322,17 @@
       <li><button class="btn btn-menu" on:click={() => {duplicatePlan(plan); showMenu = false}}>Duplicate Plan</button></li>
       <li><button class="btn btn-menu" on:click={() => {deletePlan(plan); showMenu = false}}>Delete Plan</button></li>
     </ul>
+    {/if}
   </div>
   {#if plan.showNotes}
   <div class="row">
-    <textarea bind:value={plan.notes} rows="2" use:autosize class="input input-area"></textarea>
+    <textarea
+      class="input input-area"
+      bind:value={plan.notes}
+      use:autosize
+      rows="3"
+      placeholder="Notes"
+    ></textarea>
   </div>
   {/if}
 </div>
@@ -391,6 +406,7 @@
     opacity: 0;
     transform: translateX(-50%);
     visibility: hidden;
+    z-index: 1;
   }
 
   .btn-tooltip:hover::before,
@@ -437,9 +453,9 @@
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 8px;
+    padding: var(--sz-2);
     position: absolute;
-    top: 48px;
+    top: calc(var(--sz-1) + var(--height-input) + var(--sz-2));
     width: 196px;
     z-index: 1;
   }
@@ -458,18 +474,22 @@
     background-color: var(--gray-1);
   }
 
-  .hide {
-    display: none;
+  .btn-menu:active {
+    background-color: var(--gray-2);
   }
 
   /* notes */
 
   .input-area {
     line-height: 24px;
-    margin-top: var(--sz-4);
+    margin-top: var(--sz-2);
     padding-bottom: 5px;
     padding-top: 5px;
     resize: none;
     width: 100%;
+  }
+
+  .input-area::placeholder {
+    color: hsl(0, 0%, 72%);
   }
 </style>

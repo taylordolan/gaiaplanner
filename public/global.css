@@ -62,9 +62,9 @@ select {
   --blue: hsl(210, 100%, 50%);
   --red: hsl(0, 70%, 70%);
   --white: hsl(0, 0%, 100%);
-  --gray-1: hsl(0, 0%, 96%);
-  --gray-2: hsl(0, 0%, 94%);
-  --gray-3: hsl(0, 0%, 92%);
+  --gray-1: hsl(0, 0%, 95%);
+  --gray-2: hsl(0, 0%, 92%);
+  --gray-3: hsl(0, 0%, 90%);
   --gray-4: hsl(0, 0%, 86%);
   --gray-5: hsl(0, 0%, 30%);
   --gray-6: hsl(0, 0%, 20%);
@@ -112,7 +112,7 @@ select {
 }
 
 .input:focus,
-.btn:focus {
+.btn:focus-visible {
   outline-color: var(--blue);
   outline-offset: calc(var(--border) * -1);
   outline-style: solid;
