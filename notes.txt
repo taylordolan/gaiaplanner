@@ -47,7 +47,7 @@ todo
 - [x] fix bug where focus goes to the wrong element after creating a new turn
 - [x] link to my info
 - [x] explain keyboard shortcuts
-- [ ] sticky footer
+- [x] sticky plan footers
 - [ ] a11y fixes
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
 - [ ] dark mode

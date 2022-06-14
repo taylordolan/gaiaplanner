@@ -356,7 +356,8 @@
 
   .totals-label,
   .totals-value {
-    line-height: var(--height-input);
+    line-height: 16px;
+    margin-top: 10px;
   }
 
   .totals-label {
@@ -374,7 +375,14 @@
   /* footer */
 
   .row-footer {
+    backdrop-filter: blur(2px);
+    background-color: hsla(0, 0%, 100%, 0.9);
+    bottom: 0;
     justify-content: flex-end;
+    padding-bottom: var(--sz-3);
+    padding-top: var(--sz-3);
+    position: sticky;
+    z-index: 1;
   }
 
   .btn-tooltip {
@@ -434,7 +442,6 @@
     position: absolute;
     top: calc(var(--sz-1) + var(--height-input) + var(--sz-2));
     width: 196px;
-    z-index: 1;
   }
 
   li {
