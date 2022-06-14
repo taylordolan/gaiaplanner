@@ -19,9 +19,11 @@ dd {
   margin: 0;
 }
 
-ul[role='list'],
-ol[role='list'] {
+ul,
+ol {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 html:focus-within {
@@ -101,6 +103,10 @@ select {
   padding: 0 calc(var(--sz-3) - var(--border)); /* so border + padding = --sz-3 */
 }
 
+.input-col-1 {
+  flex: 1 1 auto;
+}
+
 .btn {
   background-color: var(--gray-1);
   border: 0;
@@ -138,6 +144,10 @@ select {
   width: var(--sz-icon-1);
 }
 
+.flip-y {
+  transform: scaleY(-100%);
+}
+
 .btn-new {
   margin-right: auto;
   display: flex;
@@ -173,4 +183,22 @@ select {
 .negative-total {
   border-color: currentColor;
   color: var(--red);
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.btn-icon {
+  align-items: center;
+  display: flex;
+  height: var(--height-input);
+  justify-content: center;
+  padding: 0;
+  width: var(--height-input);
+  flex-shrink: 0;
+}
+
+.btn-icon + .btn-icon {
+  margin-left: var(--sz-2);
 }

@@ -45,17 +45,24 @@ todo
 - [x] responsiveness tweaks
 - [x] close overflow menu on button blur
 - [x] fix bug where focus goes to the wrong element after creating a new turn
-- [ ] default set of turns as a tutorial
-- [ ] explore style updates
-- [ ] test performance
-- [ ] link to my info
-- [ ] explain keyboard shortcuts
-- [ ] dark mode
+- [x] link to my info
+- [x] explain keyboard shortcuts
+- [ ] sticky footer
 - [ ] a11y fixes
+- [ ] default set of turns as a tutorial (include a free action in parentheses)
+- [ ] dark mode
+- [ ] final responsiveness tweaks
+- [ ] test in safari
+- [ ] test on ios
+- [ ] test performance
+- [ ] set up analytics
+- [ ] add a favicon
+- [ ] transition for modal
 
 after release
+- [ ] fix the weird focus bug
 - [ ] transitions
-- [ ] sticky footers
 - [ ] confirmation step for deleting a plan
 - [ ] pixel-perfect resource icons
 - [ ] explain red inputs
+- [ ] chunkier ellipsis icon

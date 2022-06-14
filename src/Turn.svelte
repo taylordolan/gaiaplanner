@@ -26,7 +26,7 @@
   {/if}
   <input
     bind:value={turn.description}
-    class="input input-desc"
+    class="input input-col-1"
     class:completed={turn.completed}
     class:excluded={turn.excluded}
     class:in-active-row={thisTurnIndex === activeTurnIndex}
@@ -52,10 +52,6 @@
 <style>
   .input.in-active-row:not(:focus) {
     border-color: hsl(210, 100%, 60%);
-  }
-
-  .input-desc {
-    flex: 1 1 auto;
   }
 
   .input-num {

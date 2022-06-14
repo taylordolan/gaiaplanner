@@ -115,7 +115,6 @@
 
   // keyboard shortcuts
   function handleKeydown(event) {
-
 		const key = event.key;
     const keyCode = event.keyCode;
     const commaCode = 188;
@@ -125,15 +124,15 @@
     // If I don't check this value, keyboard events will be repeated for each plan that exists.
     // I'm using `!== null` because `activeTurnIndex` is 0 when it's the first turn in the plan.
     if (activeTurnIndex !== null) {
-      // toggle turn complete
+      // toggle turn exclude
       if (event.altKey && keyCode === commaCode) {
         event.preventDefault();
-        toggleTurnComplete(activeTurnIndex);
+        toggleTurnExclude(activeTurnIndex);
       }
-      // toggle turn exclude
+      // toggle turn complete
       else if (event.altKey && keyCode === periodCode) {
         event.preventDefault();
-        toggleTurnExclude(activeTurnIndex);
+        toggleTurnComplete(activeTurnIndex);
       }
       // turn delete
       else if (event.altKey && keyCode === slashCode) {
@@ -159,8 +158,8 @@
           newTurn.focus();
         }, 1);
       }
-      // move cursor
-      else if (activeElement && activeElement.classList.contains("input-desc")) {
+      // move focus
+      else if (activeElement && activeElement.classList.contains("input-col-1")) {
         if (upElement && key === "ArrowUp" && activeTurnIndex !== 0) {
           event.preventDefault();
           upElement.focus();
@@ -169,9 +168,6 @@
           event.preventDefault();
           downElement.focus();
         }
-      }
-      else {
-        console.log(event.keyCode);
       }
     }
 	}
@@ -188,7 +184,7 @@
 
 <div class="plan">
   <div class="row">
-    <input bind:value={plan.label} class="input input-title">
+    <input bind:value={plan.label} class="input input-title bold">
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M28 12V18C28 22.42 22.18 26 15 26C7.82 26 2 22.42 2 18V12C2 7.58 7.82 4 15 4C22.18 4 28 7.58 28 12Z" fill="#FFF799"/>
@@ -282,18 +278,18 @@
     <button
       class="btn btn-icon btn-tooltip"
       on:mousedown={(event) => event.preventDefault()}
-      on:click={toggleTurnComplete(activeTurnIndex)}
-      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
-    >
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
-    </button>
-    <button
-      class="btn btn-icon btn-tooltip"
-      on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnExclude(activeTurnIndex)}
       data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.73,6.69c-1.27-2.58-3.85-4.19-6.73-4.19S2.55,4.11,1.27,6.69c-.4,.82-.4,1.8,0,2.62,1.27,2.58,3.85,4.19,6.73,4.19s5.45-1.6,6.73-4.19c.4-.82,.4-1.8,0-2.62Zm-1.79,1.74c-.93,1.9-2.82,3.07-4.93,3.07s-4-1.18-4.93-3.07c-.13-.27-.13-.59,0-.86,.93-1.9,2.82-3.07,4.93-3.07s4,1.18,4.93,3.07c.13,.27,.13,.59,0,.86Z"/><circle cx="8" cy="8" r="2"/></svg>
+    </button>
+    <button
+      class="btn btn-icon btn-tooltip"
+      on:mousedown={(event) => event.preventDefault()}
+      on:click={toggleTurnComplete(activeTurnIndex)}
+      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
+    >
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
     </button>
     <button
       class="btn btn-icon btn-tooltip"
@@ -339,7 +335,6 @@
 <style>
   .input-title {
     flex: 1 1 auto;
-    font-weight: 500;
   }
 
   .input-title:not(:hover) {
@@ -367,7 +362,7 @@
   .totals-label {
     flex: 1 1 auto;
     min-width: 0;
-    padding: 0 var(--sz-3); /* must equal input-desc border + padding so they stay aligned when shrinking down */
+    padding: 0 var(--sz-3); /* must equal input-col-1 border + padding so they stay aligned when shrinking down */
   }
 
   .totals-value {
@@ -380,19 +375,6 @@
 
   .row-footer {
     justify-content: flex-end;
-  }
-
-  .btn-icon {
-    align-items: center;
-    display: flex;
-    height: var(--height-input);
-    justify-content: center;
-    padding: 0;
-    width: var(--height-input);
-  }
-
-  .btn-icon + .btn-icon {
-    margin-left: var(--sz-2);
   }
 
   .btn-tooltip {
@@ -438,16 +420,12 @@
     width: 0;
   }
 
-  .flip-y {
-    transform: scaleY(-100%);
-  }
-
   /* menu */
 
   .menu {
     background-color: var(--white);
     border-radius: 8px;
-    border: 1px solid var(--gray-4);
+    border: var(--border) solid var(--gray-4);
     box-shadow: 0 2px 8px hsl(0, 0%, 0%, 4%);
     display: flex;
     flex-direction: column;
