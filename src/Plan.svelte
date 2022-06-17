@@ -312,10 +312,10 @@
       {#if !plan.showNotes}
       <li><button class="btn btn-menu" on:click={() => {plan.showNotes = true; showMenu = false}}>Show Notes</button></li>
       {:else}
-      <li><button class="btn btn-menu" on:click={() => {plan.showNotes = false; showMenu = false}}>Hide Notes</button></li>
+      <li><button class="btn btn-menu" on:click={() => {plan.showNotes = false; showMenu = false}}>Hide notes</button></li>
       {/if}
-      <li><button class="btn btn-menu" on:click={() => {duplicatePlan(plan); showMenu = false}}>Duplicate Plan</button></li>
-      <li><button class="btn btn-menu" on:click={() => {deletePlan(plan); showMenu = false}}>Delete Plan</button></li>
+      <li><button class="btn btn-menu" on:click={() => {duplicatePlan(plan); showMenu = false}}>Duplicate plan</button></li>
+      <li><button class="btn btn-menu" on:click={() => {deletePlan(plan); showMenu = false}}>Delete plan</button></li>
     </ul>
     {/if}
   </div>
@@ -375,8 +375,8 @@
   /* footer */
 
   .row-footer {
-    backdrop-filter: blur(2px);
-    background-color: hsla(0, 0%, 100%, 0.9);
+    backdrop-filter: blur(4px);
+    background-color: var(--bg-footer);
     bottom: 0;
     justify-content: flex-end;
     padding-bottom: var(--sz-3);
@@ -413,18 +413,18 @@
     line-height: 24px;
     padding: 0 var(--sz-2);
     position: absolute;
-    bottom: -36px;
+    top: -38px;
     white-space: nowrap;
   }
 
   .btn-tooltip::after {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid var(--gray-6);
+    border-top: 6px solid var(--gray-6);
     content: "";
     height: 0;
     position: absolute;
-    bottom: calc(var(--sz-3) * -1);
+    top: -14px;
     width: 0;
   }
 
@@ -440,7 +440,7 @@
     margin: 0;
     padding: var(--sz-2);
     position: absolute;
-    top: calc(var(--sz-1) + var(--height-input) + var(--sz-2));
+    bottom: calc(var(--sz-1) + var(--height-input) + var(--sz-4));
     width: 196px;
   }
 

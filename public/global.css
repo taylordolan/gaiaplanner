@@ -70,6 +70,22 @@ select {
   --gray-4: hsl(0, 0%, 86%);
   --gray-5: hsl(0, 0%, 30%);
   --gray-6: hsl(0, 0%, 20%);
+
+  --bg-footer: hsla(0, 0%, 100%, 0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+ :root {
+  --white: hsl(0, 0%, 12%); /* page background */
+  --gray-1: hsl(0, 0%, 18%); /* button backgrounds */
+  --gray-2: hsl(0, 0%, 16%); /* hover */
+  --gray-3: hsl(0, 0%, 15%); /* active */
+  --gray-4: hsl(0, 0%, 24%); /* input borders, excluded text */
+  --gray-5: hsl(0, 0%, 80%); /* button text */
+  --gray-6: hsl(0, 0%, 96%); /* text */
+
+  --bg-footer: hsla(0, 0%, 12%, 0.9);
+ }
 }
 
 @media (max-width: 660px) {
@@ -80,6 +96,11 @@ select {
 }
 
 /* global styles */
+
+
+body {
+  background-color: var(--white);
+}
 
 *::selection {
   background-color: hsl(210, 100%, 92%);
@@ -95,6 +116,7 @@ select {
 }
 
 .input {
+  background-color: var(--white);
   border-radius: var(--radius);
   border: var(--border) solid var(--gray-4);
   color: inherit;

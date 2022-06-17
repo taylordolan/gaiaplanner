@@ -48,16 +48,18 @@ todo
 - [x] link to my info
 - [x] explain keyboard shortcuts
 - [x] sticky plan footers
-- [ ] a11y fixes
-- [ ] default set of turns as a tutorial (include a free action in parentheses)
-- [ ] dark mode
+- [x] dark mode
+- [ ] fix turn-level buttons not showing for the first turn
+- [ ] fix bug: overflow menu doesn't close when one of the buttons inside it blurs
 - [ ] final responsiveness tweaks
+- [ ] a11y fixes
 - [ ] test in safari
 - [ ] test on ios
 - [ ] test performance
 - [ ] set up analytics
 - [ ] add a favicon
 - [ ] transition for modal
+- [ ] default set of turns as a tutorial (include a free action in parentheses)
 
 after release
 - [ ] fix the weird focus bug
