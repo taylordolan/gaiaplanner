@@ -51,10 +51,10 @@ todo
 - [x] dark mode
 - [x] fix turn-level buttons not showing for the first turn
 - [x] fix bug: overflow menu doesn't close when one of the buttons inside it blurs
-- [ ] final responsiveness tweaks
+- [x] test in safari
 - [ ] a11y fixes
-- [ ] test in safari
 - [ ] test on ios
+- [ ] final responsiveness tweaks
 - [ ] test performance
 - [ ] set up analytics
 - [ ] add a favicon

@@ -13,6 +13,7 @@ h3,
 h4,
 p,
 figure,
+input,
 blockquote,
 dl,
 dd {
@@ -131,20 +132,19 @@ body {
 
 .btn {
   background-color: var(--gray-1);
-  border: 0;
+  border: var(--border) solid transparent;
   border-radius: var(--radius);
   color: var(--gray-5);
   cursor: pointer;
   height: var(--height-input);
-  padding: 0 var(--sz-3);
+  padding: 0 calc(var(--sz-3) - var(--border));
 }
 
 .input:focus,
 .btn:focus-visible {
-  outline-color: var(--blue);
-  outline-offset: calc(var(--border) * -1);
-  outline-style: solid;
-  outline-width: calc(var(--border) * 2);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue);
+  outline: 0;
 }
 
 .btn:hover {
