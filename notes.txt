@@ -49,8 +49,8 @@ todo
 - [x] explain keyboard shortcuts
 - [x] sticky plan footers
 - [x] dark mode
-- [ ] fix turn-level buttons not showing for the first turn
-- [ ] fix bug: overflow menu doesn't close when one of the buttons inside it blurs
+- [x] fix turn-level buttons not showing for the first turn
+- [x] fix bug: overflow menu doesn't close when one of the buttons inside it blurs
 - [ ] final responsiveness tweaks
 - [ ] a11y fixes
 - [ ] test in safari

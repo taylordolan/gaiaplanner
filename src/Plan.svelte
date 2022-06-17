@@ -104,7 +104,7 @@
     return totals;
   }
 
-  const handleOverflowButtonBlur = () => {
+  const handleOverflowMenuBlur = () => {
     const menu = document.getElementsByClassName("menu")[0];
     setTimeout(() => {
       if (!menu.contains(document.activeElement)) {
@@ -256,7 +256,7 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M12.5,7H9V3.5a1,1,0,0,0-2,0V7H3.5a1,1,0,0,0,0,2H7v3.5a1,1,0,0,0,2,0V9h3.5a1,1,0,0,0,0-2Z"/></svg>
       New Turn
     </button>
-    {#if activeTurnIndex}
+    {#if activeTurnIndex !== null}
     <button
       class="btn btn-icon btn-tooltip"
       disabled={activeTurnIndex === 0}
@@ -279,7 +279,7 @@
       class="btn btn-icon btn-tooltip"
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnExclude(activeTurnIndex)}
-      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
+      data-tooltip={activeTurnIndex !== null && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.73,6.69c-1.27-2.58-3.85-4.19-6.73-4.19S2.55,4.11,1.27,6.69c-.4,.82-.4,1.8,0,2.62,1.27,2.58,3.85,4.19,6.73,4.19s5.45-1.6,6.73-4.19c.4-.82,.4-1.8,0-2.62Zm-1.79,1.74c-.93,1.9-2.82,3.07-4.93,3.07s-4-1.18-4.93-3.07c-.13-.27-.13-.59,0-.86,.93-1.9,2.82-3.07,4.93-3.07s4,1.18,4.93,3.07c.13,.27,.13,.59,0,.86Z"/><circle cx="8" cy="8" r="2"/></svg>
     </button>
@@ -287,7 +287,7 @@
       class="btn btn-icon btn-tooltip"
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnComplete(activeTurnIndex)}
-      data-tooltip={activeTurnIndex && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
+      data-tooltip={activeTurnIndex !== null && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
     </button>
@@ -303,19 +303,51 @@
     <button
       class="btn btn-icon"
       on:click={() => showMenu = !showMenu}
-      on:blur={handleOverflowButtonBlur}
+      on:blur={handleOverflowMenuBlur}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="1.5"/><circle cx="3" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg>
     </button>
     {#if showMenu}
     <ul class="menu">
       {#if !plan.showNotes}
-      <li><button class="btn btn-menu" on:click={() => {plan.showNotes = true; showMenu = false}}>Show Notes</button></li>
+      <li>
+        <button
+          class="btn btn-menu"
+          on:click={() => {plan.showNotes = true; showMenu = false}}
+          on:blur={handleOverflowMenuBlur}
+        >
+          Show Notes
+        </button>
+      </li>
       {:else}
-      <li><button class="btn btn-menu" on:click={() => {plan.showNotes = false; showMenu = false}}>Hide notes</button></li>
+      <li>
+        <button
+          class="btn btn-menu"
+          on:click={() => {plan.showNotes = false; showMenu = false}}
+          on:blur={handleOverflowMenuBlur}
+        >
+          Hide notes
+        </button>
+      </li>
       {/if}
-      <li><button class="btn btn-menu" on:click={() => {duplicatePlan(plan); showMenu = false}}>Duplicate plan</button></li>
-      <li><button class="btn btn-menu" on:click={() => {deletePlan(plan); showMenu = false}}>Delete plan</button></li>
+      <li>
+        <button
+          class="btn btn-menu"
+          on:click={() => {duplicatePlan(plan); showMenu = false}}
+          on:blur={handleOverflowMenuBlur}
+        >
+          Duplicate plan
+        </button>
+      </li>
+      <li>
+        <button
+          class="btn btn-menu"
+          on:click={() => {deletePlan(plan); showMenu = false}}
+          on:blur={handleOverflowMenuBlur}
+        >
+          Delete plan
+        </button>
+      </li>
     </ul>
     {/if}
   </div>
