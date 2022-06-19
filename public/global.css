@@ -27,10 +27,6 @@ ol {
   margin: 0;
 }
 
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
@@ -187,10 +183,6 @@ body {
   padding: 44px 0 36px;
   width: 100%;
   position: relative;
-}
-
-.plan:first-child {
-  margin-top: var(--sz-4);
 }
 
 .plan:not(:first-child):before {

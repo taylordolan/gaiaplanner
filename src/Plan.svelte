@@ -114,7 +114,7 @@
   }
 
   // keyboard shortcuts
-  function handleKeydown(event) {
+  const handleKeydown = (event) => {
 		const key = event.key;
     const keyCode = event.keyCode;
     const commaCode = 188;

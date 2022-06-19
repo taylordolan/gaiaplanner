@@ -1,6 +1,7 @@
 <script>
   import Plan from "./Plan.svelte";
   import { plans, newPlan } from './stores.js';
+  import { fade } from 'svelte/transition';
 
   let showModal = false;
 
@@ -24,16 +25,58 @@
     }
   }
 
-  function handleKeydown(event) {
+  const openModal = () => {
+    // get width of body without scrollbar
+    const bodyWidth = document.documentElement.clientWidth;
+
+    // get current scroll position
+    const scrollY = window.scrollY;
+
+    // set `position: fixed` with scroll position
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+
+    // `position: fixed` removes from document flow, so we have to set the width manually.
+    // we got width without scrollbar earlier so the content won't change its x position.
+    document.body.style.width = `${bodyWidth}px`;
+
+    showModal = true;
+  }
+
+  const closeModal = () => {
+    const modalEl = document.getElementsByClassName("modal")[0];
+    // similar to when we opened the modal, now we get the width of the modal without scrollbar
+    const modalWidth = modalEl.clientWidth;
+
+    // get target scroll position (of body)
+    const scrollY = document.body.style.top;
+
+    // undo the changes we made to the body when we opened the modal
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+
+    // apply the width we got earlier to the modal, again to prevent the content from changing
+    // its x position during the transition
+    modalEl.style.width = `${modalWidth}px`;
+    modalEl.style.overflow = "hidden";
+
+    // reset the scroll position to the where it was before we opened the modal
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+
+    showModal = false;
+  }
+
+  const handleKeydown = (event) => {
     if (event.key === "Escape") {
-      showModal = false;
+      closeModal();
     }
   }
 </script>
 
 <svelte:window on:keydown={handleKeydown}/>
 
-<main class:no-scroll={showModal}>
+<main>
   <div class="plans">
     {#each $plans as plan}
     <Plan
@@ -50,7 +93,7 @@
         </button>
         <button
           class="btn btn-icon btn-close"
-          on:mousedown={() => showModal = true}
+          on:click={openModal}
         >
           ?
         </button>
@@ -58,12 +101,15 @@
     </div>
   </div>
   {#if showModal}
-  <div class="modal plan">
+  <div
+    class="modal plan"
+    transition:fade
+  >
     <div class="row row-header bold">
       Keyboard Shortcuts
       <button
         class="btn btn-icon btn-close"
-        on:mousedown={() => showModal = false}
+        on:click={closeModal}
       >
         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.41,8l3.29-3.29c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-3.29,3.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l3.29,3.29-3.29,3.29c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l3.29-3.29,3.29,3.29c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29c.39-.39,.39-1.02,0-1.41l-3.29-3.29Z"/></svg>
       </button>
@@ -106,10 +152,6 @@
         <span class="key">alt</span>
         <span class="key key-square">/</span>
       </li>
-      <li class="row row-shortcut">
-        Show keyboard shortcuts
-        <span class="key key-square">?</span>
-      </li>
     </ol>
     <div class="row">
       <p>Hi, I’m <a href="https://twitter.com/taylordolan">@taylordolan</a>! I made this tool to help with planning turns in <a href="https://boardgamegeek.com/boardgame/220308/gaia-project">Gaia Project</a>, a brilliant game by Helge Ostertag and Jens Drögemüller. If you want to play, come join me on <a href="https://www.boardgamers.space/user/coyboy">BGS</a>!</p>
@@ -125,17 +167,15 @@
     font-size: var(--font-size);
   }
 
-  .no-scroll {
-    height: 100vh;
-    overflow: hidden;
-  }
-
   .modal {
     background-color: var(--white);
+    display: flex;
     height: 100vh;
     line-height: 28px;
-    position: absolute;
+    overflow: auto;
+    position: fixed;
     top: 0;
+    z-index: 1;
   }
 
   .btn-close {
