@@ -53,11 +53,13 @@ todo
 - [x] fix bug: overflow menu doesn't close when one of the buttons inside it blurs
 - [x] test in safari
 - [x] transition for modal
-- [ ] fix bug: scrollbar when there's not much content
-- [ ] a11y fixes
+- [x] fix bug: scrollbar when there's not much content
+- [x] a11y fixes
 - [ ] uneven plan padding means new plan button is too close to bottom edge of viewport
+- [ ] fix padding at bottom of modal
 - [ ] test on ios
 - [ ] disable zoom on mobile
+- [ ] set a min-width
 - [ ] final responsiveness tweaks
 - [ ] test performance
 - [ ] set up analytics

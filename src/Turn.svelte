@@ -18,9 +18,21 @@
     activeElement = event.target;
     setAdjacentElements();
   }
+
+  const vocab = {
+    c: "credits",
+    o: "ore",
+    k: "knowledge",
+    q: "qic",
+    v: "vp",
+  }
 </script>
 
-<div class="row" class:in-active-row={thisTurnIndex === activeTurnIndex}>
+<div
+  class="row"
+  class:in-active-row={thisTurnIndex === activeTurnIndex}
+  title={`turn ${thisTurnIndex}`}
+>
   {#if turn.completed}
   <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
   {/if}
@@ -31,6 +43,7 @@
     class:excluded={turn.excluded}
     class:in-active-row={thisTurnIndex === activeTurnIndex}
     data-turn={thisTurnIndex}
+    title="description"
     on:blur={handleBlur}
     on:focus={handleFocus}
   >
@@ -42,6 +55,7 @@
     class:excluded={turn.excluded}
     class:in-active-row={thisTurnIndex === activeTurnIndex}
     data-turn={thisTurnIndex}
+    title={vocab[resource[0]]}
     on:blur={handleBlur}
     on:focus={handleFocus}
     type="number"
