@@ -55,12 +55,14 @@ todo
 - [x] transition for modal
 - [x] fix bug: scrollbar when there's not much content
 - [x] a11y fixes
-- [ ] uneven plan padding means new plan button is too close to bottom edge of viewport
-- [ ] fix padding at bottom of modal
+- [x] uneven plan padding means new plan button is too close to bottom edge of viewport
+- [x] fix padding at bottom of modal
+- [x] disable zoom on mobile
 - [ ] test on ios
-- [ ] disable zoom on mobile
-- [ ] set a min-width
+- [ ] fix bug: turn-level actions don't work on ios
+- [ ] fix bug: backdrop filter isn't working on ios
 - [ ] final responsiveness tweaks
+- [ ] set a min-width
 - [ ] test performance
 - [ ] set up analytics
 - [ ] add a favicon

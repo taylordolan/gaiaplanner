@@ -175,6 +175,10 @@
     font-size: var(--font-size);
   }
 
+  .plans {
+    padding: var(--sz-3) 0;
+  }
+
   .modal {
     align-items: center;
     background-color: var(--white);

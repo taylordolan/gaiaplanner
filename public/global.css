@@ -67,7 +67,7 @@ select {
   --gray-5: hsl(0, 0%, 30%);
   --gray-6: hsl(0, 0%, 20%);
 
-  --bg-footer: hsla(0, 0%, 100%, 0.9);
+  --footer-bg: hsla(0, 0%, 100%, 0.9);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -80,7 +80,7 @@ select {
     --gray-5: hsl(0, 0%, 80%); /* button text */
     --gray-6: hsl(0, 0%, 96%); /* text */
 
-    --bg-footer: hsla(0, 0%, 12%, 0.9);
+    --footer-bg: hsla(0, 0%, 12%, 0.9);
   }
 }
 
@@ -179,7 +179,8 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 44px 0 36px;
+  /* padding: calc(44px - var(--sz-1)) 0 calc(44px - var(--sz-3)); sz-1 is padding on header row, sz-3 is padding on footer row */
+  padding: 40px;
   width: 100%;
   position: relative;
 }
