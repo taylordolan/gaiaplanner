@@ -69,7 +69,7 @@
   }
 
   .input-num {
-    margin-left: var(--sz-2);
+    margin-left: var(--input-margin);
     padding-right: 0;
     flex: 0 0 var(--width-input-num);
   }
@@ -79,7 +79,7 @@
   }
 
   .completed {
-    padding-left: 32px;
+    padding-left: calc(var(--input-padding) + var(--sz-4));
     text-decoration: line-through;
   }
 
@@ -88,7 +88,7 @@
     height: var(--sz-icon-1);
     position: absolute;
     top: 14px;
-    transform: translateX(var(--sz-3));
+    transform: translateX(var(--input-padding));
     width: var(--sz-icon-1);
   }
   </style>

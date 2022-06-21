@@ -389,9 +389,9 @@
     flex: 0 0 var(--width-input-num);
     height: var(--sz-icon-2);
     justify-content: center;
-    margin-left: var(--sz-2);
+    margin-left: var(--input-margin);
     min-width: 0;
-    padding: 0 calc(var(--sz-3) / 2); /* must equal input-num border + padding so they stay aligned when shrinking down */
+    padding: 0 calc(var(--input-padding) / 2); /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
 
   /* totals */
@@ -405,13 +405,13 @@
   .totals-label {
     flex: 1 1 auto;
     min-width: 0;
-    padding: 0 var(--sz-3); /* must equal input-col-1 border + padding so they stay aligned when shrinking down */
+    padding: 0 var(--input-padding); /* must equal input-col-1 border + padding so they stay aligned when shrinking down */
   }
 
   .totals-value {
     flex: 0 0 var(--width-input-num);
-    margin-left: var(--sz-2);
-    padding: 0 var(--border) 0 var(--sz-3); /* must equal input-num border + padding so they stay aligned when shrinking down */
+    margin-left: var(--input-margin);
+    padding: 0 var(--border) 0 var(--input-padding); /* must equal input-num border + padding so they stay aligned when shrinking down */
   }
 
   /* footer */

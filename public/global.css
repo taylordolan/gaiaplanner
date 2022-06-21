@@ -56,6 +56,9 @@ select {
   --max-width: 720px;
   --width-input-num: 60px;
   --height-input: 36px;
+  --input-margin: var(--sz-2);
+  --input-padding: var(--sz-3);
+  --outer-padding: var(--sz-5);
 
   --blue: hsl(210, 100%, 50%);
   --red: hsl(0, 70%, 70%);
@@ -84,15 +87,30 @@ select {
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 600px) {
   :root {
     --font-size: 14px;
     --width-input-num: 48px;
   }
 }
 
-/* global styles */
+@media (max-width: 510px) {
+  :root {
+    --font-size: 13px;
+    --outer-padding: var(--sz-3);
+    --width-input-num: 40px;
+  }
+}
 
+@media (max-width: 420px) {
+  :root {
+    --width-input-num: 32px;
+    --input-padding: var(--sz-2);
+    --input-margin: var(--sz-1);
+  }
+}
+
+/* global styles */
 
 body {
   background-color: var(--white);
@@ -106,7 +124,7 @@ body {
   align-items: center;
   display: flex;
   max-width: 100%;
-  padding: var(--sz-1) var(--sz-5);
+  padding: var(--sz-1) var(--outer-padding);
   position: relative;
   width: var(--max-width);
 }
@@ -118,7 +136,7 @@ body {
   color: inherit;
   line-height: calc(var(--height-input) - var(--border) * 2);
   min-width: 0;
-  padding: 0 calc(var(--sz-3) - var(--border)); /* so border + padding = --sz-3 */
+  padding: 0 calc(var(--input-padding) - var(--border)); /* so border + padding = --sz-3 */
 }
 
 .input-col-1 {
@@ -132,7 +150,7 @@ body {
   color: var(--gray-5);
   cursor: pointer;
   height: var(--height-input);
-  padding: 0 calc(var(--sz-3) - var(--border));
+  padding: 0 calc(var(--input-padding) - var(--border));
 }
 
 .input:focus,
@@ -166,9 +184,9 @@ body {
 }
 
 .btn-new {
-  margin-right: auto;
-  display: flex;
   align-items: center;
+  display: flex;
+  margin-right: auto;
 }
 
 .btn-new .icon {
@@ -179,19 +197,18 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  /* padding: calc(44px - var(--sz-1)) 0 calc(44px - var(--sz-3)); sz-1 is padding on header row, sz-3 is padding on footer row */
-  padding: 40px;
-  width: 100%;
+  padding: 40px 0;
   position: relative;
+  width: 100%;
 }
 
 .plan:not(:first-child):before {
-  content: "";
-  width: var(--max-width);
-  max-width: 100%;
   border-top: 2px solid var(--gray-1);
+  content: "";
+  max-width: 100%;
   position: relative;
   top: calc((var(--height-input) + var(--sz-2)) * -1);
+  width: var(--max-width);
 }
 
 .negative-total {
@@ -206,13 +223,13 @@ body {
 .btn-icon {
   align-items: center;
   display: flex;
+  flex-shrink: 0;
   height: var(--height-input);
   justify-content: center;
   padding: 0;
   width: var(--height-input);
-  flex-shrink: 0;
 }
 
 .btn-icon + .btn-icon {
-  margin-left: var(--sz-2);
+  margin-left: var(--input-margin);
 }
