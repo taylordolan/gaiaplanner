@@ -1,9 +1,17 @@
 <script>
   import Plan from "./Plan.svelte";
   import { plans, newPlan } from './stores.js';
-  import { fade } from 'svelte/transition';
+  import { sineOut } from 'svelte/easing';
 
   let showModal = false;
+
+  const enter = () => {
+    return {
+      duration: 200,
+      easing: sineOut,
+      css: (t, u) => `opacity: ${t}; transform: translateY(${u * 40}px) scale(${.95 + t * 0.05})`
+    }
+  }
 
   const addPlan = () => {
     $plans = [...$plans, $newPlan()];
@@ -102,8 +110,8 @@
   </div>
   {#if showModal}
   <div
-    class="modal plan"
-    transition:fade
+    class="modal"
+    transition:enter
   >
     <div class="row row-header bold">
       Keyboard Shortcuts
@@ -168,13 +176,17 @@
   }
 
   .modal {
+    align-items: center;
     background-color: var(--white);
     display: flex;
+    flex-direction: column;
     height: 100vh;
     line-height: 28px;
     overflow: auto;
+    padding: 44px 0;
     position: fixed;
     top: 0;
+    width: 100%;
     z-index: 1;
   }
 

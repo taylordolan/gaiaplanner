@@ -52,9 +52,12 @@ todo
 - [x] fix turn-level buttons not showing for the first turn
 - [x] fix bug: overflow menu doesn't close when one of the buttons inside it blurs
 - [x] test in safari
-- [ ] transition for modal
+- [x] transition for modal
+- [ ] fix bug: scrollbar when there's not much content
 - [ ] a11y fixes
+- [ ] uneven plan padding means new plan button is too close to bottom edge of viewport
 - [ ] test on ios
+- [ ] disable zoom on mobile
 - [ ] final responsiveness tweaks
 - [ ] test performance
 - [ ] set up analytics
