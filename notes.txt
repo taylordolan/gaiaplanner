@@ -60,12 +60,12 @@ todo
 - [x] disable zoom on mobile
 - [x] final responsiveness tweaks
 - [x] set a min-width
+- [x] set up analytics
 - [ ] test on ios
 - [ ] adjust vertical padding at small sizes
 - [ ] fix bug: turn-level actions don't work on ios
 - [ ] fix bug: backdrop filter isn't working on ios
 - [ ] test performance
-- [ ] set up analytics
 - [ ] add title and favicon
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
 - [ ] fix highlight color in dark mode

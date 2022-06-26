@@ -105,9 +105,23 @@ select {
 
 @media (max-width: 420px) {
   :root {
+    --font-size: 12px;
     --width-input-num: 32px;
     --input-padding: var(--sz-2);
     --input-margin: var(--sz-1);
+    --height-input: 32px;
+  }
+
+}
+
+@media (max-width: 360px) {
+  :root {
+    --width-input-num: 32px;
+    --sz-icon-1: 14px;
+  }
+
+  .icon-new {
+    display: none;
   }
 }
 
@@ -157,6 +171,7 @@ body {
 
 .input:focus,
 .btn:focus-visible {
+  -webkit-appearance: none;
   border-color: var(--blue);
   box-shadow: 0 0 0 1px var(--blue);
   outline: 0;
