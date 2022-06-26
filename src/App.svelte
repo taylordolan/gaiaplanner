@@ -80,13 +80,23 @@
       closeModal();
     }
   }
+
+  const mobileBlur = (event) => {
+    const tag = event.target.tagName
+    if (tag !== "INPUT" && tag !== "BUTTON") {
+      document.activeElement.blur();
+    }
+  }
 </script>
 
 <svelte:window on:keydown={handleKeydown}/>
 
 <main>
   <!-- tabindex hack blurs inputs when tapping away on mobile -->
-  <div class="plans" tabindex="-1">
+  <div
+    class="plans"
+    on:click={mobileBlur}
+  >
     {#each $plans as plan}
     <Plan
       bind:plan={plan}
