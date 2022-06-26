@@ -85,7 +85,8 @@
 <svelte:window on:keydown={handleKeydown}/>
 
 <main>
-  <div class="plans">
+  <!-- tabindex hack blurs inputs when tapping away on mobile -->
+  <div class="plans" tabindex="-1">
     {#each $plans as plan}
     <Plan
       bind:plan={plan}
