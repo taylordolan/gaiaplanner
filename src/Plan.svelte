@@ -441,8 +441,8 @@
     z-index: 1;
   }
 
-  .btn-tooltip:hover::before,
-  .btn-tooltip:hover::after {
+  .btn-tooltip:hover:not(:disabled)::before,
+  .btn-tooltip:hover:not(:disabled)::after {
     opacity: 1;
     visibility: visible;
   }

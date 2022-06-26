@@ -162,7 +162,7 @@
       </li>
     </ol>
     <div class="row">
-      <p>Hi, I’m <a href="https://twitter.com/taylordolan">@taylordolan</a>! I made this tool to help with planning turns in <a href="https://boardgamegeek.com/boardgame/220308/gaia-project">Gaia Project</a>, a brilliant game by Helge Ostertag and Jens Drögemüller. If you want to play, come join me on <a href="https://www.boardgamers.space/user/coyboy">BGS</a>!</p>
+      <p>Hi, I’m <a href="https://twitter.com/taylordolan">@taylordolan</a>! I made this tool to help with planning turns in the brilliant <a href="https://boardgamegeek.com/boardgame/220308/gaia-project">Gaia Project</a> by Helge Ostertag and Jens Drögemüller. If you want to play, come join me on <a href="https://www.boardgamers.space/user/coyboy">BGS</a>!</p>
     </div>
   </div>
   {/if}
@@ -186,6 +186,7 @@
     flex-direction: column;
     height: 100vh;
     line-height: 28px;
+    min-width: var(--min-width);
     overflow: auto;
     padding: 44px 0;
     position: fixed;

@@ -58,17 +58,20 @@ todo
 - [x] uneven plan padding means new plan button is too close to bottom edge of viewport
 - [x] fix padding at bottom of modal
 - [x] disable zoom on mobile
-- [ ] final responsiveness tweaks
+- [x] final responsiveness tweaks
+- [x] set a min-width
 - [ ] test on ios
+- [ ] adjust vertical padding at small sizes
 - [ ] fix bug: turn-level actions don't work on ios
 - [ ] fix bug: backdrop filter isn't working on ios
-- [ ] set a min-width
 - [ ] test performance
 - [ ] set up analytics
-- [ ] add a favicon
+- [ ] add title and favicon
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
+- [ ] fix highlight color in dark mode
 
 after release
+- [ ] color theming per plan
 - [ ] fix the weird focus bug
 - [ ] transitions
 - [ ] confirmation step for deleting a plan
