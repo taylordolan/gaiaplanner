@@ -86,6 +86,9 @@
       setTimeout(() => {
         nextTurn.focus();
       }, 1);
+    } else {
+      activeTurnIndex = null;
+      activeElement = null;
     }
   }
 
