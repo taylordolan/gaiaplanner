@@ -69,11 +69,12 @@ todo
 - [x] adjust vertical padding at small sizes
 - [x] fix highlight color in dark mode
 - [x] focus plan title after creating new plan
-- [ ] transition for overflow menu
+- [x] transition for overflow menu
 - [ ] transition for turn-level action buttons
 - [ ] add favicon
 - [ ] red text for plan deletion
 - [ ] revise modal layout and project description
+- [ ] tweak dark theme
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
 
 after release

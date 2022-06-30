@@ -5,11 +5,14 @@
 
   let showModal = false;
 
-  const enter = () => {
+  const modalEnter = () => {
     return {
       duration: 200,
       easing: sineOut,
-      css: (t, u) => `opacity: ${t}; transform: translateY(${u * 40}px) scale(${.95 + t * 0.05})`
+      css: (t, u) => `
+        opacity: ${t};
+        transform: translateY(${u * 40}px) scale(${.95 + t * 0.05})
+      `
     }
   }
 
@@ -131,7 +134,7 @@
   {#if showModal}
   <div
     class="modal"
-    transition:enter
+    transition:modalEnter
   >
     <div class="row row-header bold">
       Keyboard Shortcuts

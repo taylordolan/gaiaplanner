@@ -1,6 +1,7 @@
 <script>
   import Turn from "./Turn.svelte";
   import { newTurn } from './stores.js';
+  import { sineOut } from 'svelte/easing';
   import autosize from 'svelte-autosize';
   export let plan;
   export let deletePlan;
@@ -11,6 +12,17 @@
   let upElement = null;
   let downElement = null;
   let showMenu = false;
+
+  const menuEnter = () => {
+    return {
+      duration: 100,
+      easing: sineOut,
+      css: (t, u) => `
+        opacity: ${t};
+        transform: translateY(${u * 10}px) scale(${.95 + t * 0.05})
+      `
+    }
+  }
 
   const addTurn = (index) => {
     // make sure the new turn's id is unique
@@ -110,7 +122,7 @@
   const handleOverflowMenuBlur = () => {
     const menu = document.getElementsByClassName("menu")[0];
     setTimeout(() => {
-      if (!menu.contains(document.activeElement)) {
+      if (!menu || !menu.contains(document.activeElement)) {
         showMenu = false;
       }
     }, 1);
@@ -321,7 +333,10 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="1.5"/><circle cx="3" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg>
     </button>
     {#if showMenu}
-    <ul class="menu">
+    <ul
+      class="menu"
+      transition:menuEnter
+    >
       {#if !plan.showNotes}
       <li>
         <button
@@ -479,7 +494,7 @@
   .menu {
     background-color: var(--white);
     border-radius: 8px;
-    border: var(--border) solid var(--gray-4);
+    border: var(--border) solid var(--gray-2);
     box-shadow: 0 2px 8px hsl(0, 0%, 0%, 4%);
     display: flex;
     flex-direction: column;
