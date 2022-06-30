@@ -58,6 +58,7 @@ select {
   --height-input: 36px;
   --input-margin: var(--sz-2);
   --input-padding: var(--sz-3);
+  --plan-padding: 40px;
   --outer-padding: var(--sz-5);
   --min-width: 320px;
 
@@ -100,22 +101,23 @@ select {
     --font-size: 13px;
     --outer-padding: var(--sz-3);
     --width-input-num: 40px;
+    --height-input: 32px;
+    --plan-padding: 36px;
   }
 }
 
 @media (max-width: 420px) {
   :root {
-    --font-size: 12px;
-    --width-input-num: 32px;
+    --width-input-num: 36px;
     --input-padding: var(--sz-2);
     --input-margin: var(--sz-1);
-    --height-input: 32px;
   }
 
 }
 
 @media (max-width: 360px) {
   :root {
+    --font-size: 12px;
     --width-input-num: 32px;
     --sz-icon-1: 14px;
   }
@@ -133,7 +135,7 @@ body {
 }
 
 *::selection {
-  background-color: hsl(210, 100%, 92%);
+  background-color: hsla(210, 100%, 75%, 0.4);
 }
 
 .row {
@@ -215,7 +217,7 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
+  padding: var(--plan-padding) 0;
   position: relative;
   width: 100%;
 }

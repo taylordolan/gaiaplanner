@@ -382,7 +382,7 @@
     flex: 1 1 auto;
   }
 
-  .input-title:not(:hover) {
+  .input-title:not(:hover):not(:focus) {
     border-color: transparent;
   }
 

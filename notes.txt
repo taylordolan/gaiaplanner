@@ -64,25 +64,26 @@ todo
 - [x] fix bug: turn-level actions don't work on ios
 - [x] test on ios
 - [x] add title
-- [ ] adjust vertical padding at small sizes
-- [ ] test performance
+- [x] fix check alignment bug on completed turns at smallest width
+- [x] test performance
+- [x] adjust vertical padding at small sizes
+- [x] fix highlight color in dark mode
+- [x] focus plan title after creating new plan
+- [ ] transition for overflow menu
+- [ ] transition for turn-level action buttons
 - [ ] add favicon
-- [ ] default set of turns as a tutorial (include a free action in parentheses)
-- [ ] fix highlight color in dark mode
-- [ ] handle exra long totals
-- [ ] focus plan title after creating new plan
-- [ ] fix check alignment bug on completed turns at smallest width
-- [ ] more/better transitions
-- [ ] pixel-perfect resource icons
-- [ ] dark mode for resource icons
 - [ ] red text for plan deletion
-- [ ] chunkier ellipsis icon
 - [ ] revise modal layout and project description
-- [ ] icons for shortcuts that use punctuation keys
+- [ ] default set of turns as a tutorial (include a free action in parentheses)
 
 after release
+- [ ] punctuation icons (period, comma, question mark)
+- [ ] chunkier ellipsis icon
+- [ ] pixel-perfect resource icons
+- [ ] dark mode for resource icons
 - [ ] fix bug: backdrop filter isn't working on ios
 - [ ] color theming per plan
 - [ ] fix the weird focus bug
-- [ ] confirmation step for deleting a plan
+- [ ] confirmation step for plan deletion
 - [ ] explain red inputs
+- [ ] some better handling for turns marked done, maybe "apply completed turns" or something else

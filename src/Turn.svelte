@@ -79,7 +79,7 @@
   }
 
   .completed {
-    padding-left: calc(var(--input-padding) + var(--sz-4));
+    padding-left: calc(var(--input-padding) + var(--sz-icon-1) + 2px);
     text-decoration: line-through;
   }
 
@@ -87,7 +87,7 @@
     fill: currentColor;
     height: var(--sz-icon-1);
     position: absolute;
-    top: 14px;
+    top: calc(var(--height-input) / 2 - var(--sz-icon-1) / 4);
     transform: translateX(var(--input-padding));
     width: var(--sz-icon-1);
   }
