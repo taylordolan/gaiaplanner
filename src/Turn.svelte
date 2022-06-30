@@ -33,9 +33,7 @@
   class:in-active-row={thisTurnIndex === activeTurnIndex}
   title={`turn ${thisTurnIndex}`}
 >
-  {#if turn.completed}
-  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
-  {/if}
+  <svg class="icon" class:in={turn.completed} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
   <input
     bind:value={turn.description}
     class="input input-col-1"
@@ -69,6 +67,10 @@
     border-color: hsl(210, 100%, 60%);
   }
 
+  .input-col-1 {
+    transition: padding-left .15s ease-out;
+  }
+
   .input-num {
     margin-left: var(--input-margin);
     padding-right: 0;
@@ -80,16 +82,23 @@
   }
 
   .completed {
-    padding-left: calc(var(--input-padding) + var(--sz-icon-1) + 2px);
+    padding: 0 calc(var(--input-padding) - var(--border) + var(--sz-icon-1) + var(--check-margin));
     text-decoration: line-through;
   }
 
   .icon {
     fill: currentColor;
     height: var(--sz-icon-1);
+    opacity: 0;
     position: absolute;
     top: calc(var(--height-input) / 2 - var(--sz-icon-1) / 4);
-    transform: translateX(var(--input-padding));
+    transform: translateX(calc((var(--sz-icon-1) - var(--input-padding) + var(--check-margin) + var(--border)) * -1));
+    transition: opacity .15s ease-out, transform .15s ease-out;
     width: var(--sz-icon-1);
+  }
+
+  .icon.in {
+    opacity: 1;
+    transform: translateX(calc(var(--input-padding) - var(--border)));
   }
   </style>

@@ -57,6 +57,7 @@ select {
   --width-input-num: 60px;
   --height-input: 36px;
   --input-margin: var(--sz-2);
+  --check-margin: 2px; /* space between check and text for completed turns */
   --input-padding: var(--sz-3);
   --plan-padding: 40px;
   --outer-padding: var(--sz-5);

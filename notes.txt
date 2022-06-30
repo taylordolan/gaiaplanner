@@ -70,17 +70,18 @@ todo
 - [x] fix highlight color in dark mode
 - [x] focus plan title after creating new plan
 - [x] transition for overflow menu
-- [ ] red text for plan deletion
+- [x] red text for plan deletion
+- [x] transition for completed turns
 - [ ] add favicon
 - [ ] revise modal layout and project description
 - [ ] tweak dark theme
+- [ ] pixel-perfect resource icons
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
 
 after release
 - [ ] transition for turn-level action buttons
 - [ ] punctuation icons (period, comma, question mark)
 - [ ] chunkier ellipsis icon
-- [ ] pixel-perfect resource icons
 - [ ] dark mode for resource icons
 - [ ] fix bug: backdrop filter isn't working on ios
 - [ ] color theming per plan
