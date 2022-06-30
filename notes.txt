@@ -70,14 +70,14 @@ todo
 - [x] fix highlight color in dark mode
 - [x] focus plan title after creating new plan
 - [x] transition for overflow menu
-- [ ] transition for turn-level action buttons
-- [ ] add favicon
 - [ ] red text for plan deletion
+- [ ] add favicon
 - [ ] revise modal layout and project description
 - [ ] tweak dark theme
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
 
 after release
+- [ ] transition for turn-level action buttons
 - [ ] punctuation icons (period, comma, question mark)
 - [ ] chunkier ellipsis icon
 - [ ] pixel-perfect resource icons

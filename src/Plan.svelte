@@ -369,7 +369,7 @@
       </li>
       <li>
         <button
-          class="btn btn-menu"
+          class="btn btn-menu color-red"
           on:click={() => {deletePlan(plan); showMenu = false}}
           on:blur={handleOverflowMenuBlur}
         >

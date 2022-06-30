@@ -51,7 +51,8 @@
   <input
     bind:value={turn.resources[resource[0]]}
     class="input input-num"
-    class:negative-total={turn.resources[resource[0]] < 0 && runningTotals[resource[0]] < 0}
+    class:color-red={turn.resources[resource[0]] < 0 && runningTotals[resource[0]] < 0}
+    class:border-red={turn.resources[resource[0]] < 0 && runningTotals[resource[0]] < 0}
     class:excluded={turn.excluded}
     class:in-active-row={thisTurnIndex === activeTurnIndex}
     data-turn={thisTurnIndex}
