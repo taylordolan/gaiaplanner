@@ -68,7 +68,7 @@
   }
 
   .input-col-1 {
-    transition: padding-left .15s ease-out;
+    transition: padding-left .1s ease-out;
   }
 
   .input-num {
@@ -93,7 +93,7 @@
     position: absolute;
     top: calc(var(--height-input) / 2 - var(--sz-icon-1) / 4);
     transform: translateX(calc((var(--sz-icon-1) - var(--input-padding) + var(--check-margin) + var(--border)) * -1));
-    transition: opacity .15s ease-out, transform .15s ease-out;
+    transition: opacity .1s ease-out, transform .1s ease-out;
     width: var(--sz-icon-1);
   }
 

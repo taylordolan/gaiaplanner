@@ -72,10 +72,10 @@ todo
 - [x] transition for overflow menu
 - [x] red text for plan deletion
 - [x] transition for completed turns
-- [ ] add favicon
+- [x] pixel-perfect resource icons
 - [ ] revise modal layout and project description
+- [ ] add favicon
 - [ ] tweak dark theme
-- [ ] pixel-perfect resource icons
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
 
 after release

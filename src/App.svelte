@@ -7,11 +7,11 @@
 
   const modalEnter = () => {
     return {
-      duration: 200,
+      duration: 100,
       easing: sineOut,
       css: (t, u) => `
         opacity: ${t};
-        transform: translateY(${u * 40}px) scale(${.95 + t * 0.05})
+        transform: translateY(${u * 20}px) scale(${.95 + t * 0.05})
       `
     }
   }
@@ -85,7 +85,10 @@
   }
 
   const handleKeydown = (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "?" && !document.activeElement.classList.contains("input")) {
+      openModal();
+    }
+    else if (event.key === "Escape") {
       closeModal();
     }
   }
@@ -101,7 +104,6 @@
 <svelte:window on:keydown={handleKeydown}/>
 
 <main>
-  <!-- tabindex hack blurs inputs when tapping away on mobile -->
   <div
     class="plans"
     on:click={mobileBlur}
@@ -183,9 +185,13 @@
         <span class="key">alt</span>
         <span class="key key-square">/</span>
       </li>
+      <li class="row row-shortcut">
+        Show shortcuts
+        <span class="key key-square">?</span>
+      </li>
     </ol>
     <div class="row">
-      <p>Hi, I’m <a href="https://twitter.com/taylordolan">@taylordolan</a>! I made this tool to help with planning turns in the brilliant <a href="https://boardgamegeek.com/boardgame/220308/gaia-project">Gaia Project</a> by Helge Ostertag and Jens Drögemüller. If you want to play, come join me on <a href="https://www.boardgamers.space/user/coyboy">BGS</a>!</p>
+      <p>Made by <a href="https://twitter.com/taylordolan" target="_blank">@taylordolan</a></p>
     </div>
   </div>
   {/if}
@@ -211,7 +217,7 @@
     line-height: 28px;
     min-width: var(--min-width);
     overflow: auto;
-    padding: 44px 0;
+    padding: var(--plan-padding) 0;
     position: fixed;
     top: 0;
     width: 100%;
@@ -225,13 +231,13 @@
 
   .list-shortcuts {
     border-top: var(--border) solid var(--gray-2);
-    margin-bottom: 28px;
-    margin-top: 28px;
+    margin-bottom: var(--sz-5);
+    margin-top: var(--sz-5);
     max-width: 100%;
   }
 
   .row-header {
-    margin-top: var(--sz-4);
+    margin-top: var(--sz-3);
   }
 
   .row-shortcut {

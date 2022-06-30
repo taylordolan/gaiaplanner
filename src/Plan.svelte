@@ -206,46 +206,44 @@
     >
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M28 12V18C28 22.42 22.18 26 15 26C7.82 26 2 22.42 2 18V12C2 7.58 7.82 4 15 4C22.18 4 28 7.58 28 12Z" fill="#FFF799"/>
-        <path d="M2 12V18C2 22.42 7.82 26 15 26C22.18 26 28 22.42 28 18V12C28 16.42 22.18 20 15 20C7.82 20 2 16.42 2 12Z" fill="#EDD55E"/>
-        <path d="M28 12V18C28 22.42 22.18 26 15 26C7.82 26 2 22.42 2 18V12C2 7.58 7.82 4 15 4C22.18 4 28 7.58 28 12Z" stroke="#CCAC33" stroke-miterlimit="10"/>
+        <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#fec900;"/>
+        <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#ccac33;"/>
+        <path d="M15,26c-7.047,0-13-3.664-13-8v-6C2,7.664,7.953,4,15,4s13,3.664,13,8v6c0,4.336-5.953,8-13,8Z" style="fill:#fff799;"/>
+        <path d="M15,20c-7.168,0-13-3.589-13-8v6c0,4.411,5.832,8,13,8s13-3.589,13-8v-6c0,4.411-5.832,8-13,8Z" style="fill:#edd55e;"/>
       </svg>
     </div>
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M25.5 4L28 20L27.5 26H2.5L2 20L4.5 4H25.5Z" fill="white"/>
-        <path d="M28 20L27.5 26H2.5L2 20H28Z" fill="#E8E6E3"/>
-        <path d="M25.5 4L28 20L27.5 26H2.5L2 20L4.5 4H25.5Z" stroke="#AFABA1" stroke-miterlimit="10"/>
+        <polygon points="25.917 3 4.083 3 .997 19.974 1.537 27 28.463 27 29.003 19.974 25.917 3" style="fill:#c3c0b8;"/>
+        <polygon points="4.917 4 2.008 20 27.992 20 25.083 4 4.917 4" style="fill:#fff;"/>
+        <polygon points="2.003 20.026 2.463 26 27.537 26 27.997 20.026 27.992 20 2.008 20 2.003 20.026" style="fill:#e8e6e3;"/>
       </svg>
     </div>
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 9L9.5 4H20.5L28 9V21L20.5 26H9.5L2 21V9Z" fill="#C2F1FF"/>
-        <path d="M28 15V21L20.5 26V20L28 15Z" fill="#7DD3E8"/>
-        <path d="M2 15V21L9.5 26V20L2 15Z" fill="#7DD3E8"/>
-        <path d="M20.5 20H9.5V26H20.5V20Z" fill="#9CE6FC"/>
-        <path d="M2 9L9.5 4H20.5L28 9V21L20.5 26H9.5L2 21V9Z" stroke="#53ADC6" stroke-miterlimit="10"/>
+        <polygon points="20.136 3 9.864 3 1 8.214 1 21.786 9.864 27 20.136 27 29 21.786 29 8.214 20.136 3" style="fill:#53adc6;"/>
+        <polygon points="20 4 10 4 2 8.786 2 14.786 2 15.214 2 21.214 10 26 20 26 28 21.214 28 15.214 28 14.786 28 8.786 20 4" style="fill:#c2f1ff;"/>
+        <polygon points="10 20 2 15.214 2 21.214 10 26 20 26 28 21.214 28 15.214 20 20 10 20" style="fill:#7dd3e8;"/>
+        <rect x="10" y="20" width="10" height="6" style="fill:#9ce6fc;"/>
       </svg>
     </div>
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.73828 21.505V8.505L9.36828 11.755V18.255L14.9983 21.505V28.005L3.73828 21.505Z" fill="#6CC17B"/>
-        <path d="M14.9983 2.005L26.2583 8.505L20.6283 11.755L14.9983 8.505L9.36828 11.755L3.73828 8.505L14.9983 2.005Z" fill="#B7EBC0"/>
-        <path d="M26.26 21.505L15 28.005V21.505L20.63 18.255V11.755L26.26 8.505V21.505Z" fill="#8BDA99"/>
-        <path d="M20.6272 18.255L14.9972 15.005L9.36719 18.255L14.9972 21.505L20.6272 18.255Z" fill="#B7EBC0"/>
-        <path d="M9.36719 18.255L14.9972 15.005V8.505L9.36719 11.755V18.255Z" fill="#8BDA99"/>
-        <path d="M15 8.505V15.005L20.63 18.255V11.755L15 8.505Z" fill="#6CC17B"/>
-        <path d="M14.9983 2.005L3.73828 8.505V21.505L14.9983 28.005L26.2583 21.505V8.505L14.9983 2.005Z" stroke="#609F7C" stroke-miterlimit="10"/>
+        <path d="M15,1.144L3,8.071v13.857l12,6.928,12-6.928V8.071L15,1.144Z" style="fill:#609f7c;"/>
+        <polygon points="4 21.351 4 8.649 15 2.298 26 8.649 26 21.351 15 27.702 4 21.351" style="fill:#6cc17b;"/>
+        <polygon points="15 2.298 4 8.649 9.25 11.68 15 8.36 20.75 11.68 26 8.649 15 2.298" style="fill:#b7ebc0;"/>
+        <polygon points="20.75 18.32 15 21.64 15 27.702 26 21.351 26 8.649 26 8.649 20.75 11.68 20.75 18.32" style="fill:#8bda99;"/>
+        <polygon points="20.75 18.32 15 15 9.25 18.32 15 21.64 20.75 18.32" style="fill:#b7ebc0;"/>
+        <polygon points="9.25 18.32 15 15 15 8.36 9.25 11.68 9.25 18.32" style="fill:#8bda99;"/>
       </svg>
     </div>
     <div class="resource-icon-wrapper">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M26 3H4C3.44772 3 3 3.44772 3 4V26C3 26.5523 3.44772 27 4 27H26C26.5523 27 27 26.5523 27 26V4C27 3.44772 26.5523 3 26 3Z" fill="#D2A36A" stroke="#B3854D" stroke-miterlimit="10"/>
-        <path d="M18.7405 8.50999C20.9805 9.80999 22.4905 12.22 22.4905 15C22.4905 19.14 19.1305 22.5 14.9905 22.5C10.8505 22.5 7.49047 19.14 7.49047 15C7.49047 12.22 9.00047 9.80999 11.2405 8.50999L9.60047 5.67999C7.11047 7.38999 5.48047 10.26 5.48047 13.5C5.48047 18.75 9.73047 23 14.9805 23C20.2305 23 24.4805 18.75 24.4805 13.5C24.4805 10.25 22.8505 7.38999 20.3605 5.67999L18.7405 8.50999Z" fill="#EBE3DB" stroke="#EBE3DB" stroke-miterlimit="10"/>
-        <path d="M12.7568 14.9178L12.7431 15L12.7568 15.0822L14.5068 25.5822H15.4932L17.2432 15.0822L17.2569 15L17.2432 14.9178L15.4932 4.4178H14.5068L12.7568 14.9178Z" fill="#FFF4D1" stroke="#D2A36A"/>
-        <path d="M15 13L9.5 15L15 17L20.5 15L15 13Z" fill="#FFF4D1"/>
-        <path d="M13.5894 13.59L11.1094 18.89L16.4094 16.41L18.8894 11.11L13.5894 13.59Z" fill="#FFF4D1"/>
-        <path d="M16.4094 13.59L18.8894 18.89L13.5894 16.41L11.1094 11.11L16.4094 13.59Z" fill="#FFF4D1"/>
+        <rect x="2" y="2" width="26" height="26" rx="1.5" ry="1.5" style="fill:#b3854d;"/>
+        <rect x="3" y="3" width="24" height="24" rx=".5" ry=".5" style="fill:#d2a36a;"/>
+        <path d="M24.98,13.5c0-3.29-1.622-6.367-4.337-8.232l-.448-.307-2.136,3.732,.43,.25c2.16,1.253,3.501,3.575,3.501,6.058,0,3.294-2.29,6.057-5.36,6.798l-.266,1.595c4.86-.678,8.616-4.849,8.616-9.893Z" style="fill:#ebe3db;"/>
+        <path d="M7.99,15c0-2.483,1.342-4.804,3.501-6.058l.432-.251-2.161-3.729-.445,.306c-2.715,1.865-4.337,4.942-4.337,8.232,0,5.06,3.78,9.243,8.663,9.9l-.262-1.594c-3.085-.73-5.391-3.501-5.391-6.806Z" style="fill:#ebe3db;"/>
+        <polygon points="17.568 16.066 20.5 15 17.568 13.934 18.889 11.11 16.303 12.32 15.07 4.918 14.93 4.918 13.697 12.321 11.109 11.11 12.431 13.934 9.5 15 12.431 16.066 11.109 18.89 13.697 17.679 14.93 25.082 15.07 25.082 16.303 17.68 18.889 18.89 17.568 16.066" style="fill:#fff4d1;"/>
       </svg>
     </div>
   </div>
@@ -261,11 +259,11 @@
   {/each}
   <div class="row">
     <span class="totals-label">Totals:</span>
-    <span class="totals-value" class:negative-total={totalC < 0}>{totalC}c</span>
-    <span class="totals-value" class:negative-total={totalO < 0}>{totalO}o</span>
-    <span class="totals-value" class:negative-total={totalK < 0}>{totalK}k</span>
-    <span class="totals-value" class:negative-total={totalQ < 0}>{totalQ}q</span>
-    <span class="totals-value" class:negative-total={totalV < 0}>{totalV}vp</span>
+    <span class="totals-value" class:color-red={totalC < 0}>{totalC}c</span>
+    <span class="totals-value" class:color-red={totalO < 0}>{totalO}o</span>
+    <span class="totals-value" class:color-red={totalK < 0}>{totalK}k</span>
+    <span class="totals-value" class:color-red={totalQ < 0}>{totalQ}q</span>
+    <span class="totals-value" class:color-red={totalV < 0}>{totalV}vp</span>
   </div>
   <div class="row row-footer">
     <button
@@ -282,7 +280,7 @@
       on:mousedown={(event) => event.preventDefault()}
       on:click={moveTurnUp(activeTurnIndex)}
       data-tooltip="Move up"
-      title="Move turn up"
+      title="Move up"
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
@@ -292,7 +290,7 @@
       on:mousedown={(event) => event.preventDefault()}
       on:click={moveTurnDown(activeTurnIndex)}
       data-tooltip="Move down"
-      title="Move turn down"
+      title="Move down"
     >
       <svg class="icon flip-y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.71,7.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L7,5.41V13a1,1,0,0,0,2,0V5.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,13.71,7.29Z"/></svg>
     </button>
@@ -301,7 +299,7 @@
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnExclude(activeTurnIndex)}
       data-tooltip={activeTurnIndex !== null && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
-      title={activeTurnIndex !== null && plan.turns[activeTurnIndex].excluded ? "Include turn in plan" : "Exclude turn from plan"}
+      title={activeTurnIndex !== null && plan.turns[activeTurnIndex].excluded ? "Include in plan" : "Exclude from plan"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.73,6.69c-1.27-2.58-3.85-4.19-6.73-4.19S2.55,4.11,1.27,6.69c-.4,.82-.4,1.8,0,2.62,1.27,2.58,3.85,4.19,6.73,4.19s5.45-1.6,6.73-4.19c.4-.82,.4-1.8,0-2.62Zm-1.79,1.74c-.93,1.9-2.82,3.07-4.93,3.07s-4-1.18-4.93-3.07c-.13-.27-.13-.59,0-.86,.93-1.9,2.82-3.07,4.93-3.07s4,1.18,4.93,3.07c.13,.27,.13,.59,0,.86Z"/><circle cx="8" cy="8" r="2"/></svg>
     </button>
@@ -310,7 +308,7 @@
       on:mousedown={(event) => event.preventDefault()}
       on:click={toggleTurnComplete(activeTurnIndex)}
       data-tooltip={activeTurnIndex !== null && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
-      title={activeTurnIndex !== null && plan.turns[activeTurnIndex].completed ? "Mark turn not done" : "Mark turn done"}
+      title={activeTurnIndex !== null && plan.turns[activeTurnIndex].completed ? "Mark not done" : "Mark done"}
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14.21,3.79c-.39-.39-1.02-.39-1.41,0l-6.29,6.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l4,4c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l7-7c.39-.39,.39-1.02,0-1.41Z"/></svg>
     </button>
@@ -319,7 +317,7 @@
       on:mousedown={(event) => event.preventDefault()}
       on:click={deleteTurn(activeTurnIndex)}
       data-tooltip="Delete"
-      title="Delete turn"
+      title="Delete"
     >
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.41,8l3.29-3.29c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-3.29,3.29-3.29-3.29c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l3.29,3.29-3.29,3.29c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l3.29-3.29,3.29,3.29c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29c.39-.39,.39-1.02,0-1.41l-3.29-3.29Z"/></svg>
     </button>
