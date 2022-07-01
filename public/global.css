@@ -78,15 +78,15 @@ select {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --white: hsl(0, 0%, 12%); /* page background */
-    --gray-1: hsl(0, 0%, 18%); /* button backgrounds */
-    --gray-2: hsl(0, 0%, 16%); /* hover */
-    --gray-3: hsl(0, 0%, 15%); /* active */
-    --gray-4: hsl(0, 0%, 24%); /* input borders, excluded text */
+    --white: hsl(0, 0%, 14%); /* page background */
+    --gray-1: hsl(0, 0%, 20%); /* button backgrounds */
+    --gray-2: hsl(0, 0%, 18%); /* hover */
+    --gray-3: hsl(0, 0%, 17%); /* active */
+    --gray-4: hsl(0, 0%, 25%); /* input borders, excluded text */
     --gray-5: hsl(0, 0%, 80%); /* button text */
     --gray-6: hsl(0, 0%, 96%); /* text */
 
-    --footer-bg: hsla(0, 0%, 12%, 0.9);
+    --footer-bg: hsla(0, 0%, 14%, 0.9);
   }
 }
 

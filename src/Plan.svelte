@@ -169,7 +169,7 @@
       else if (key === "Enter") {
         addTurn(activeTurnIndex + 1);
         setTimeout(() => {
-          const newTurn = activeElement.parentElement.nextElementSibling.children[0];
+          const newTurn = activeElement.parentElement.nextElementSibling.getElementsByTagName("input")[0];
           newTurn.focus();
         }, 1);
       }

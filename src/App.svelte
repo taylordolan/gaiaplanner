@@ -7,7 +7,7 @@
 
   const modalEnter = () => {
     return {
-      duration: 100,
+      duration: 200,
       easing: sineOut,
       css: (t, u) => `
         opacity: ${t};
@@ -190,8 +190,8 @@
         <span class="key key-square">?</span>
       </li>
     </ol>
-    <div class="row">
-      <p>Made by <a href="https://twitter.com/taylordolan" target="_blank">@taylordolan</a></p>
+    <div class="row row-footer">
+      <p>Made by <a href="https://twitter.com/taylordolan" target="_blank">Taylor Dolan ↗</a></p>
     </div>
   </div>
   {/if}
@@ -240,6 +240,10 @@
     margin-top: var(--sz-3);
   }
 
+  .row-footer {
+    line-height: var(--height-input);
+  }
+
   .row-shortcut {
     border-bottom: var(--border) solid var(--gray-2);
     padding-top: var(--sz-3);
@@ -268,6 +272,14 @@
   }
 
   a {
-    color: var(--blue);
+    color: var(--black);
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a:active {
+    color: var(--gray-5);
   }
 </style>

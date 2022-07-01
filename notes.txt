@@ -73,9 +73,9 @@ todo
 - [x] red text for plan deletion
 - [x] transition for completed turns
 - [x] pixel-perfect resource icons
-- [ ] revise modal layout and project description
-- [ ] add favicon
-- [ ] tweak dark theme
+- [x] revise modal layout and project description
+- [x] add favicon
+- [x] tweak dark theme
 - [ ] default set of turns as a tutorial (include a free action in parentheses)
 
 after release
