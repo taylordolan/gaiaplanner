@@ -95,7 +95,7 @@
 
   const mobileBlur = (event) => {
     const tag = event.target.tagName
-    if (tag !== "INPUT" && tag !== "BUTTON") {
+    if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "BUTTON") {
       document.activeElement.blur();
     }
   }
