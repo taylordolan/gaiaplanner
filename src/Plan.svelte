@@ -342,7 +342,7 @@
           on:click={() => {plan.showNotes = true; showMenu = false}}
           on:blur={handleOverflowMenuBlur}
         >
-          Show Notes
+          Show notes
         </button>
       </li>
       {:else}
