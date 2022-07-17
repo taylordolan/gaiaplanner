@@ -24,6 +24,10 @@
     o: "ore",
     k: "knowledge",
     q: "qic",
+    p1: "power bowl 1",
+    p2: "power bowl 2",
+    p3: "power bowl 3",
+    pg: "gaia bowl",
     v: "vp",
   }
 </script>

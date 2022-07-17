@@ -105,7 +105,7 @@
   }
 
   const getTotals = (turns, turnIndex) => {
-    let totals = { c: 0, o: 0, k: 0, q: 0, v: 0 };
+    let totals = { c: 0, o: 0, k: 0, q: 0, p1: 0, p2: 0, p3: 0, pg: 0, v: 0 };
     // for every turn
     for (let j = 0; j <= turnIndex; j++) {
       // for every type of resource
@@ -192,6 +192,10 @@
   $: totalO = grandTotals.o;
   $: totalK = grandTotals.k;
   $: totalQ = grandTotals.q;
+  $: totalP1 = grandTotals.p1;
+  $: totalP2 = grandTotals.p2;
+  $: totalP3 = grandTotals.p3;
+  $: totalPG = grandTotals.pg;
   $: totalV = grandTotals.v;
 </script>
 
@@ -204,7 +208,7 @@
       bind:value={plan.label}
       title="plan title"
     >
-    <div class="resource-icon-wrapper">
+    <div class="resource-icon-wrapper"> <!-- Credits -->
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#fec900;"/>
         <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#ccac33;"/>
@@ -212,14 +216,14 @@
         <path d="M15,20c-7.168,0-13-3.589-13-8v6c0,4.411,5.832,8,13,8s13-3.589,13-8v-6c0,4.411-5.832,8-13,8Z" style="fill:#edd55e;"/>
       </svg>
     </div>
-    <div class="resource-icon-wrapper">
+    <div class="resource-icon-wrapper"> <!-- Ore -->
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <polygon points="25.917 3 4.083 3 .997 19.974 1.537 27 28.463 27 29.003 19.974 25.917 3" style="fill:#c3c0b8;"/>
         <polygon points="4.917 4 2.008 20 27.992 20 25.083 4 4.917 4" style="fill:#fff;"/>
         <polygon points="2.003 20.026 2.463 26 27.537 26 27.997 20.026 27.992 20 2.008 20 2.003 20.026" style="fill:#e8e6e3;"/>
       </svg>
     </div>
-    <div class="resource-icon-wrapper">
+    <div class="resource-icon-wrapper"> <!-- Knowledge -->
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <polygon points="20.136 3 9.864 3 1 8.214 1 21.786 9.864 27 20.136 27 29 21.786 29 8.214 20.136 3" style="fill:#53adc6;"/>
         <polygon points="20 4 10 4 2 8.786 2 14.786 2 15.214 2 21.214 10 26 20 26 28 21.214 28 15.214 28 14.786 28 8.786 20 4" style="fill:#c2f1ff;"/>
@@ -227,7 +231,7 @@
         <rect x="10" y="20" width="10" height="6" style="fill:#9ce6fc;"/>
       </svg>
     </div>
-    <div class="resource-icon-wrapper">
+    <div class="resource-icon-wrapper"> <!-- QIC -->
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15,1.144L3,8.071v13.857l12,6.928,12-6.928V8.071L15,1.144Z" style="fill:#609f7c;"/>
         <polygon points="4 21.351 4 8.649 15 2.298 26 8.649 26 21.351 15 27.702 4 21.351" style="fill:#6cc17b;"/>
@@ -237,7 +241,39 @@
         <polygon points="9.25 18.32 15 15 15 8.36 9.25 11.68 9.25 18.32" style="fill:#8bda99;"/>
       </svg>
     </div>
-    <div class="resource-icon-wrapper">
+    <div class="resource-icon-wrapper"> <!-- Power Bowl 1 -->
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#6a0080;"/>
+        <path d="M15,26c-7.047,0-13-3.664-13-8v-6C2,7.664,7.953,4,15,4s13,3.664,13,8v6c0,4.336-5.953,8-13,8Z" style="fill:#ed94ff;"/>
+        <path d="M15,20c-7.168,0-13-3.589-13-8v6c0,4.411,5.832,8,13,8s13-3.589,13-8v-6c0,4.411-5.832,8-13,8Z" style="fill:#aa40bf;"/>
+        <text x="15" y="17" text-anchor="middle" style="font-weight: bold; fill: #6a0080;">I</text>
+      </svg>
+    </div>
+    <div class="resource-icon-wrapper"> <!-- Power Bowl 2 -->
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#6a0080;"/>
+        <path d="M15,26c-7.047,0-13-3.664-13-8v-6C2,7.664,7.953,4,15,4s13,3.664,13,8v6c0,4.336-5.953,8-13,8Z" style="fill:#ed94ff;"/>
+        <path d="M15,20c-7.168,0-13-3.589-13-8v6c0,4.411,5.832,8,13,8s13-3.589,13-8v-6c0,4.411-5.832,8-13,8Z" style="fill:#aa40bf;"/>
+        <text x="15" y="17" text-anchor="middle" style="font-weight: bold; fill: #6a0080;">II</text>
+      </svg>
+    </div>
+    <div class="resource-icon-wrapper"> <!-- Power Bowl 3 -->
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#6a0080;"/>
+        <path d="M15,26c-7.047,0-13-3.664-13-8v-6C2,7.664,7.953,4,15,4s13,3.664,13,8v6c0,4.336-5.953,8-13,8Z" style="fill:#ed94ff;"/>
+        <path d="M15,20c-7.168,0-13-3.589-13-8v6c0,4.411,5.832,8,13,8s13-3.589,13-8v-6c0,4.411-5.832,8-13,8Z" style="fill:#aa40bf;"/>
+        <text x="15" y="17" text-anchor="middle" style="font-weight: bold; fill: #6a0080;">III</text>
+      </svg>
+    </div>
+    <div class="resource-icon-wrapper" style="border-radius: 4px; background: #aaeecc;"> <!-- Gaia Bowl -->
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15,27c-7.72,0-14-4.038-14-9v-6C1,7.038,7.28,3,15,3s14,4.038,14,9v6c0,4.962-6.28,9-14,9Z" style="fill:#6a0080;"/>
+        <path d="M15,26c-7.047,0-13-3.664-13-8v-6C2,7.664,7.953,4,15,4s13,3.664,13,8v6c0,4.336-5.953,8-13,8Z" style="fill:#ed94ff;"/>
+        <path d="M15,20c-7.168,0-13-3.589-13-8v6c0,4.411,5.832,8,13,8s13-3.589,13-8v-6c0,4.411-5.832,8-13,8Z" style="fill:#aa40bf;"/>
+        <text x="15" y="17" text-anchor="middle" style="font-weight: bold; fill: #0a7950;">G</text>
+      </svg>
+    </div>
+    <div class="resource-icon-wrapper"> <!-- VP -->
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="2" y="2" width="26" height="26" rx="1.5" ry="1.5" style="fill:#b3854d;"/>
         <rect x="3" y="3" width="24" height="24" rx=".5" ry=".5" style="fill:#d2a36a;"/>
@@ -263,6 +299,10 @@
     <span class="totals-value" class:color-red={totalO < 0}>{totalO}o</span>
     <span class="totals-value" class:color-red={totalK < 0}>{totalK}k</span>
     <span class="totals-value" class:color-red={totalQ < 0}>{totalQ}q</span>
+    <span class="totals-value" class:color-red={totalP1 < 0}>{totalP1}p1</span>
+    <span class="totals-value" class:color-red={totalP2 < 0}>{totalP2}p2</span>
+    <span class="totals-value" class:color-red={totalP3 < 0}>{totalP3}p3</span>
+    <span class="totals-value" class:color-red={totalPG < 0}>{totalPG}pg</span>
     <span class="totals-value" class:color-red={totalV < 0}>{totalV}vp</span>
   </div>
   <div class="row row-footer">

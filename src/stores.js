@@ -3,7 +3,7 @@ import { readable, writable } from "svelte/store"
 const _newTurn = (id) => {
   return {
     description: "",
-    resources: { c: 0, o: 0, k: 0, q: 0, v: 0 },
+    resources: { c: 0, o: 0, k: 0, q: 0, p1: 0, p2: 0, p3: 0, pg: 0, v: 0 },
     excluded: false,
     completed: false,
     id: id,
